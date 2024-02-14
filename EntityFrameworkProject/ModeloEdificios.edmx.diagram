@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b053f73b2e46428c987ce8306df757f7" Name="Diagram1">
+        <EntityTypeShape EntityType="edificiosReligiososModel.Continentes" Width="1.5" PointX="4.375" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="edificiosReligiososModel.EdificiosReligiosos" Width="1.5" PointX="7.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="edificiosReligiososModel.Paises" Width="1.5" PointX="10.5" PointY="2.375" IsExpanded="true" />
+        <AssociationConnector Association="edificiosReligiososModel.FK__Paises__id_conti__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="edificiosReligiososModel.FK__Edificios__id_pa__4F7CD00D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
