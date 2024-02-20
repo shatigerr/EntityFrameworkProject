@@ -28,36 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(gestionEdificios));
-            this.dgv = new System.Windows.Forms.DataGridView();
             this.btAdd = new System.Windows.Forms.PictureBox();
             this.btDel = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.dgv = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.btAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btDel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgv
-            // 
-            this.dgv.AllowUserToAddRows = false;
-            this.dgv.AllowUserToDeleteRows = false;
-            this.dgv.AllowUserToOrderColumns = true;
-            this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
-            this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(12, 24);
-            this.dgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgv.Name = "dgv";
-            this.dgv.ReadOnly = true;
-            this.dgv.RowHeadersWidth = 51;
-            this.dgv.RowTemplate.Height = 24;
-            this.dgv.Size = new System.Drawing.Size(667, 514);
-            this.dgv.TabIndex = 0;
             // 
             // btAdd
             // 
             this.btAdd.Image = global::EntityFrameworkProject.Properties.Resources.add;
-            this.btAdd.Location = new System.Drawing.Point(897, 47);
+            this.btAdd.Location = new System.Drawing.Point(618, 33);
             this.btAdd.Name = "btAdd";
             this.btAdd.Size = new System.Drawing.Size(63, 61);
             this.btAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -67,40 +51,61 @@
             // btDel
             // 
             this.btDel.Image = global::EntityFrameworkProject.Properties.Resources.trash;
-            this.btDel.Location = new System.Drawing.Point(897, 133);
+            this.btDel.Location = new System.Drawing.Point(618, 100);
             this.btDel.Name = "btDel";
             this.btDel.Size = new System.Drawing.Size(63, 61);
             this.btDel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btDel.TabIndex = 4;
             this.btDel.TabStop = false;
+            this.btDel.Click += new System.EventHandler(this.btDel_Click);
+            // 
+            // dgv
+            // 
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Yellow;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Location = new System.Drawing.Point(23, 33);
+            this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
+            this.dgv.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgv.RowHeadersVisible = false;
+            this.dgv.RowHeadersWidth = 51;
+            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv.ShowEditingIcon = false;
+            this.dgv.Size = new System.Drawing.Size(570, 500);
+            this.dgv.TabIndex = 10;
             // 
             // gestionEdificios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
             this.ClientSize = new System.Drawing.Size(1053, 561);
+            this.Controls.Add(this.dgv);
             this.Controls.Add(this.btDel);
             this.Controls.Add(this.btAdd);
-            this.Controls.Add(this.dgv);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "gestionEdificios";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Text = "Gestion Edificios";
             this.Load += new System.EventHandler(this.gestionEdificios_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btDel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.PictureBox btAdd;
         private System.Windows.Forms.PictureBox btDel;
+        private System.Windows.Forms.DataGridView dgv;
     }
 }

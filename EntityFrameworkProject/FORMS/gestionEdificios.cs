@@ -24,15 +24,38 @@ namespace EntityFrameworkProject.FORMS
                                  orderby ed.nombre
                                  select new
                                  {
+                                     ID = ed.id_edificio,
+                                     Ubicación = ed.ubicacion,
+                                     Nombre = ed.nombre,
                                      Capacidad = ed.capacidad,
                                      País = ed.Paises.nombre_pais,
-                                     Ubicación = ed.ubicacion,
-                                     Nombre = ed.nombre
+                                     
                                  };
 
+
             dgv.DataSource = queryBuildings.ToList();
+            dgv.AutoResizeColumns();
 
         }
 
+        private void btDel_Click(object sender, EventArgs e)
+        {
+            int id = (int)dgv.SelectedCells[0].Value;
+            try
+            {
+                EdificiosReligiosos edif = practicaCtx.EdificiosReligiosos.FirstOrDefault(ed => ed.id_edificio == id);                           // busquem a la taula de cursos per clau primària
+                practicaCtx.EdificiosReligiosos.DeleteObject(edif);
+                
+            }
+            catch
+            {
+                MessageBox.Show("No se ha podido borrar el registro con el id " + id);
+            }
+            finally
+            {
+                practicaCtx.SaveChanges();
+            }
+            
+        }
     }
 }
