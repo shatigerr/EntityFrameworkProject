@@ -56,12 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Continentes.cs">
-      <DependentUpon>ModeloEdificios.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EdificiosReligiosos.cs">
-      <DependentUpon>ModeloEdificios.tt</DependentUpon>
-    </Compile>
     <Compile Include="FORMS\gestionEdificios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,23 +68,10 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModeloEdificios.Context.cs">
+    <Compile Include="Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloEdificios.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModeloEdificios.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloEdificios.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModeloEdificios.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloEdificios.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Paises.cs">
-      <DependentUpon>ModeloEdificios.tt</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,12 +91,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="ModeloEdificios.edmx">
+    <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloEdificios.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ModeloEdificios.edmx.diagram">
-      <DependentUpon>ModeloEdificios.edmx</DependentUpon>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -132,16 +113,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModeloEdificios.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModeloEdificios.Context.cs</LastGenOutput>
-      <DependentUpon>ModeloEdificios.edmx</DependentUpon>
-    </Content>
-    <Content Include="ModeloEdificios.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloEdificios.edmx</DependentUpon>
-      <LastGenOutput>ModeloEdificios.cs</LastGenOutput>
-    </Content>
+    <None Include="Resources\trash.png" />
+    <None Include="Resources\add.png" />
     <None Include="Resources\menuHamburger.png" />
     <None Include="Resources\icon.png" />
     <None Include="Resources\manageIcon.png" />

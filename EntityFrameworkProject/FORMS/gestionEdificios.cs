@@ -12,9 +12,27 @@ namespace EntityFrameworkProject.FORMS
 {
     public partial class gestionEdificios : Form
     {
+        practicaEdifEntities practicaCtx = new practicaEdifEntities();
         public gestionEdificios()
         {
             InitializeComponent();
         }
+
+        private void gestionEdificios_Load(object sender, EventArgs e)
+        {
+            var queryBuildings = from ed in practicaCtx.EdificiosReligiosos
+                                 orderby ed.nombre
+                                 select new
+                                 {
+                                     Capacidad = ed.capacidad,
+                                     País = ed.Paises.nombre_pais,
+                                     Ubicación = ed.ubicacion,
+                                     Nombre = ed.nombre
+                                 };
+
+            dgv.DataSource = queryBuildings.ToList();
+
+        }
+
     }
 }
