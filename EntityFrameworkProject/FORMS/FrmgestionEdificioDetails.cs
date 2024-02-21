@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,10 +17,13 @@ namespace EntityFrameworkProject.FORMS
     public partial class FrmgestionEdificioDetails : Form
     {
         int op;
-        practicaEdifEntities1 practicaCtx;
+        practicaEdifEntities2 practicaCtx;
+        public FrmgestionEdificios ed;
         string base64String;
-        
-        public FrmgestionEdificioDetails(practicaEdifEntities1 practicaCtx,int op)
+        EdificiosReligiosos edificiosReligiosos;
+
+
+        public FrmgestionEdificioDetails(practicaEdifEntities2 practicaCtx,int op)
         {
             this.practicaCtx = practicaCtx;
             this.op = op;   
@@ -64,6 +68,20 @@ namespace EntityFrameworkProject.FORMS
             }
         }
 
+            public static Image Base64ToImage(string base64String)
+            {
+                // Convertir la cadena Base64 a un array de bytes
+                byte[] imageBytes = Convert.FromBase64String(base64String);
+
+                // Crear un flujo de memoria a partir del array de bytes
+                using (MemoryStream ms = new MemoryStream(imageBytes))
+                {
+                    // Crear una imagen a partir del flujo de memoria
+                    Image image = Image.FromStream(ms);
+                    return image;
+                }
+            }
+
         private void btCancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -71,14 +89,39 @@ namespace EntityFrameworkProject.FORMS
 
         private void FrmgestionEdificioDetails_Load(object sender, EventArgs e)
         {
-            FrmgestionEdificios ed;
-            if(op == 2)
-            {
-                
-            }
-
+            edificiosReligiosos = new EdificiosReligiosos();
             initCbContinente();
             initCbPais();
+            if (op == 2)
+            {
+                edificiosReligiosos.id_edificio = ed.edificiosReligios.id_edificio;
+                tbId.Text = edificiosReligiosos.id_edificio.ToString();
+                edificiosReligiosos = practicaCtx.EdificiosReligiosos.Find(ed.edificiosReligios.id_edificio);
+
+                tbId.Text = edificiosReligiosos.id_edificio.ToString();
+                tbNombre.Text = edificiosReligiosos.nombre.ToString();
+                tbCapacidad.Text = edificiosReligiosos.capacidad.ToString();
+                tbUbicacion.Text = edificiosReligiosos.ubicacion.ToString();
+                dateTimePicker1.Text = edificiosReligiosos.fecha_construccion.ToString();
+                tbreligion.Text = edificiosReligiosos.denominacion_religiosa.ToString();
+                cbPais.Text = edificiosReligiosos.Paises.nombre_pais.ToString();
+                cbContinente.Text = "";
+                tbgoogleMaps.Text = edificiosReligiosos.google_maps_link.ToString();
+                tbWikipedia.Text = edificiosReligiosos.wikipedia_link.ToString();
+                pbImagen.Image = Base64ToImage(edificiosReligiosos.ImagenBase64);
+                pbImagen.SizeMode = PictureBoxSizeMode.Zoom;
+
+
+                tbWeb.Text = edificiosReligiosos.web_link.ToString();
+
+                
+                
+                
+                //cbContinente.Text = paises.Continentes.nombre_continente;
+               
+            }
+
+            
 
 
 
@@ -128,33 +171,65 @@ namespace EntityFrameworkProject.FORMS
             EdificiosReligiosos edificios = new EdificiosReligiosos();
 
             this.Cursor = Cursors.WaitCursor;
-            
-            
 
-            edificios.nombre = tbNombre.Text.Trim();
-            edificios.ubicacion = tbUbicacion.Text.Trim();
-            edificios.capacidad = Convert.ToInt32(tbCapacidad.Text.Trim());
-            edificios.fecha_construccion = dateTimePicker1.Value;
-            edificios.denominacion_religiosa = tbreligion.Text.Trim();
-            edificios.id_pais = (int)cbPais.SelectedValue;
-            edificios.google_maps_link = tbgoogleMaps.Text.Trim();
-            edificios.wikipedia_link = tbWikipedia.Text.Trim();
-            edificios.web_link = tbWeb.Text.Trim();
-            edificios.ImagenBase64 = base64String;
 
-            try
+            
+            edificiosReligiosos.nombre = tbNombre.Text.Trim();
+            edificiosReligiosos.ubicacion = tbUbicacion.Text.Trim();
+            edificiosReligiosos.capacidad = Convert.ToInt32(tbCapacidad.Text.Trim());
+            edificiosReligiosos.fecha_construccion = dateTimePicker1.Value;
+            edificiosReligiosos.denominacion_religiosa = tbreligion.Text.Trim();
+            edificiosReligiosos.id_pais = (int)cbPais.SelectedValue;
+            edificiosReligiosos.google_maps_link = tbgoogleMaps.Text.Trim();
+            edificiosReligiosos.wikipedia_link = tbWikipedia.Text.Trim();
+            edificiosReligiosos.web_link = tbWeb.Text.Trim();
+            edificiosReligiosos.ImagenBase64 = base64String;
+
+            if(op == 2)
             {
-                practicaCtx.EdificiosReligiosos.Add(edificios);
-                practicaCtx.SaveChanges();
-            }
-            catch(Exception ex) 
-            {
-                MessageBox.Show($"Error al insertar el edificio religioso: {ex.Message}");
-            }
+                try
+                {
+                    
+                    practicaCtx.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"NO SE HA PODIDO MODIFICAR EL EDIFICIO {ex}");
 
+                }
+            }
+            else
+            {
+                try
+                {
+
+                    practicaCtx.EdificiosReligiosos.Add(edificios);
+                    practicaCtx.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al insertar el edificio religioso: {ex.Message}");
+                }
+            }       
                 
+           
+        }
+
+        private void cbContinente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbPais.Enabled = true;
+        }
+
+        private void cbPais_TextUpdate(object sender, EventArgs e)
+        {
+            if (!(cbContinente.Text == ""))
+            {
                 
-            
+            }
+            else
+            {
+                cbPais.Enabled = false;
+            }
         }
     }
 }

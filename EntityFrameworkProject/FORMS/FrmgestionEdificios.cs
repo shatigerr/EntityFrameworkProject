@@ -13,7 +13,7 @@ namespace EntityFrameworkProject.FORMS
 {
     public partial class FrmgestionEdificios : Form
     {
-        practicaEdifEntities1 practicaCtx = new practicaEdifEntities1();
+        practicaEdifEntities2 practicaCtx = new practicaEdifEntities2();
         public EdificiosReligiosos edificiosReligios;
         public FrmgestionEdificios()
         {
@@ -74,6 +74,7 @@ namespace EntityFrameworkProject.FORMS
 
             FrmgestionEdificioDetails edificioDetails = new FrmgestionEdificioDetails(practicaCtx, 2);
             edificioDetails.MdiParent = (FrmMain)this.MdiParent;
+            edificioDetails.ed = this;
             edificioDetails.Show();
         }
     }
