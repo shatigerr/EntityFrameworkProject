@@ -1,6 +1,6 @@
 ﻿namespace EntityFrameworkProject.FORMS
 {
-    partial class gestionEdificios
+    partial class FrmgestionEdificios
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(gestionEdificios));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmgestionEdificios));
             this.btAdd = new System.Windows.Forms.PictureBox();
             this.btDel = new System.Windows.Forms.PictureBox();
             this.dgv = new System.Windows.Forms.DataGridView();
@@ -47,6 +47,7 @@
             this.btAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btAdd.TabIndex = 3;
             this.btAdd.TabStop = false;
+            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
             // btDel
             // 

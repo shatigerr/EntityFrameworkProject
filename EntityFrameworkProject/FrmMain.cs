@@ -19,10 +19,10 @@ namespace EntityFrameworkProject
         }
 
 
-        gestionEdificios frmGestionEdificios;
+        FrmgestionEdificios frmGestionEdificios;
         private void edificiosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmGestionEdificios = new gestionEdificios();
+            frmGestionEdificios = new FrmgestionEdificios();
             frmGestionEdificios.ShowDialog();
         }
 

@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace EntityFrameworkProject.FORMS
 {
-    public partial class gestionEdificios : Form
+    public partial class FrmgestionEdificios : Form
     {
-        practicaEdifEntities practicaCtx = new practicaEdifEntities();
-        public gestionEdificios()
+        practicaEdifEntities1 practicaCtx = new practicaEdifEntities1();
+        public FrmgestionEdificios()
         {
             InitializeComponent();
         }
@@ -44,7 +44,7 @@ namespace EntityFrameworkProject.FORMS
             try
             {
                 EdificiosReligiosos edif = practicaCtx.EdificiosReligiosos.FirstOrDefault(ed => ed.id_edificio == id);                           // busquem a la taula de cursos per clau primària
-                practicaCtx.EdificiosReligiosos.DeleteObject(edif);
+                practicaCtx.EdificiosReligiosos.Remove(edif);
                 
             }
             catch
@@ -56,6 +56,12 @@ namespace EntityFrameworkProject.FORMS
                 practicaCtx.SaveChanges();
             }
             
+        }
+
+        private void btAdd_Click(object sender, EventArgs e)
+        {
+            FrmgestionEdificioDetails edificioDetails = new FrmgestionEdificioDetails(practicaCtx,1);
+            edificioDetails.Show();
         }
     }
 }

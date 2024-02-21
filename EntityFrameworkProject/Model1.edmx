@@ -27,7 +27,7 @@
           <Property Name="google_maps_link" Type="varchar" MaxLength="255" />
           <Property Name="web_link" Type="varchar" MaxLength="255" />
           <Property Name="wikipedia_link" Type="varchar" MaxLength="255" />
-          <Property Name="imagen_portada_base64" Type="text" />
+          <Property Name="ImagenBase64" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Paises">
           <Key>
@@ -95,14 +95,14 @@
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ubicacion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="capacidad" Type="Int32" />
-          <Property Name="fecha_construccion" Type="DateTime" />
+          <Property Name="fecha_construccion" Type="DateTime" Precision="0" />
           <Property Name="denominacion_religiosa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ressenya" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="id_pais" Type="Int32" />
           <Property Name="google_maps_link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="web_link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="wikipedia_link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="imagen_portada_base64" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImagenBase64" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Paises" Relationship="Self.FK__Edificios__id_pa__4F7CD00D" FromRole="EdificiosReligiosos" ToRole="Paises" />
         </EntityType>
         <EntityType Name="Paises">
@@ -139,7 +139,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="practicaEdifEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="practicaEdifEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Continentes" EntityType="Self.Continentes" />
           <EntitySet Name="EdificiosReligiosos" EntityType="Self.EdificiosReligiosos" />
           <EntitySet Name="Paises" EntityType="Self.Paises" />
@@ -157,7 +157,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="practicaEdifModelStoreContainer" CdmEntityContainer="practicaEdifEntities">
+        <EntityContainerMapping StorageEntityContainer="practicaEdifModelStoreContainer" CdmEntityContainer="practicaEdifEntities1">
           <EntitySetMapping Name="Continentes">
             <EntityTypeMapping TypeName="practicaEdifModel.Continentes">
               <MappingFragment StoreEntitySet="Continentes">
@@ -180,7 +180,7 @@
                 <ScalarProperty Name="google_maps_link" ColumnName="google_maps_link" />
                 <ScalarProperty Name="web_link" ColumnName="web_link" />
                 <ScalarProperty Name="wikipedia_link" ColumnName="wikipedia_link" />
-                <ScalarProperty Name="imagen_portada_base64" ColumnName="imagen_portada_base64" />
+                <ScalarProperty Name="ImagenBase64" ColumnName="ImagenBase64" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -210,6 +210,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
