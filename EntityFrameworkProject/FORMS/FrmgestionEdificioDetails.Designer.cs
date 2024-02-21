@@ -68,6 +68,7 @@
             // lbId
             // 
             this.lbId.AutoSize = true;
+            this.lbId.ForeColor = System.Drawing.Color.Black;
             this.lbId.Location = new System.Drawing.Point(38, 44);
             this.lbId.Name = "lbId";
             this.lbId.Size = new System.Drawing.Size(20, 16);
@@ -91,6 +92,7 @@
             // lbNombre
             // 
             this.lbNombre.AutoSize = true;
+            this.lbNombre.ForeColor = System.Drawing.Color.Black;
             this.lbNombre.Location = new System.Drawing.Point(38, 98);
             this.lbNombre.Name = "lbNombre";
             this.lbNombre.Size = new System.Drawing.Size(56, 16);
@@ -107,6 +109,7 @@
             // lbUbicacion
             // 
             this.lbUbicacion.AutoSize = true;
+            this.lbUbicacion.ForeColor = System.Drawing.Color.Black;
             this.lbUbicacion.Location = new System.Drawing.Point(38, 146);
             this.lbUbicacion.Name = "lbUbicacion";
             this.lbUbicacion.Size = new System.Drawing.Size(68, 16);
@@ -123,6 +126,7 @@
             // lbCapacidad
             // 
             this.lbCapacidad.AutoSize = true;
+            this.lbCapacidad.ForeColor = System.Drawing.Color.Black;
             this.lbCapacidad.Location = new System.Drawing.Point(49, 192);
             this.lbCapacidad.Name = "lbCapacidad";
             this.lbCapacidad.Size = new System.Drawing.Size(74, 16);
@@ -132,6 +136,7 @@
             // lbfecha
             // 
             this.lbfecha.AutoSize = true;
+            this.lbfecha.ForeColor = System.Drawing.Color.Black;
             this.lbfecha.Location = new System.Drawing.Point(38, 230);
             this.lbfecha.Name = "lbfecha";
             this.lbfecha.Size = new System.Drawing.Size(123, 16);
@@ -148,6 +153,7 @@
             // lbreligion
             // 
             this.lbreligion.AutoSize = true;
+            this.lbreligion.ForeColor = System.Drawing.Color.Black;
             this.lbreligion.Location = new System.Drawing.Point(38, 270);
             this.lbreligion.Name = "lbreligion";
             this.lbreligion.Size = new System.Drawing.Size(149, 16);
@@ -157,6 +163,7 @@
             // lbContinente
             // 
             this.lbContinente.AutoSize = true;
+            this.lbContinente.ForeColor = System.Drawing.Color.Black;
             this.lbContinente.Location = new System.Drawing.Point(38, 321);
             this.lbContinente.Name = "lbContinente";
             this.lbContinente.Size = new System.Drawing.Size(70, 16);
@@ -183,6 +190,7 @@
             // lbPais
             // 
             this.lbPais.AutoSize = true;
+            this.lbPais.ForeColor = System.Drawing.Color.Black;
             this.lbPais.Location = new System.Drawing.Point(38, 371);
             this.lbPais.Name = "lbPais";
             this.lbPais.Size = new System.Drawing.Size(34, 16);
@@ -199,6 +207,7 @@
             // lbgoogleMaps
             // 
             this.lbgoogleMaps.AutoSize = true;
+            this.lbgoogleMaps.ForeColor = System.Drawing.Color.Black;
             this.lbgoogleMaps.Location = new System.Drawing.Point(38, 429);
             this.lbgoogleMaps.Name = "lbgoogleMaps";
             this.lbgoogleMaps.Size = new System.Drawing.Size(106, 16);
@@ -215,6 +224,7 @@
             // lbWikipedia
             // 
             this.lbWikipedia.AutoSize = true;
+            this.lbWikipedia.ForeColor = System.Drawing.Color.Black;
             this.lbWikipedia.Location = new System.Drawing.Point(38, 476);
             this.lbWikipedia.Name = "lbWikipedia";
             this.lbWikipedia.Size = new System.Drawing.Size(85, 16);
@@ -231,6 +241,7 @@
             // lbWeb
             // 
             this.lbWeb.AutoSize = true;
+            this.lbWeb.ForeColor = System.Drawing.Color.Black;
             this.lbWeb.Location = new System.Drawing.Point(38, 520);
             this.lbWeb.Name = "lbWeb";
             this.lbWeb.Size = new System.Drawing.Size(53, 16);
@@ -251,6 +262,7 @@
             // 
             // btsubirimagen
             // 
+            this.btsubirimagen.ForeColor = System.Drawing.Color.Black;
             this.btsubirimagen.Location = new System.Drawing.Point(551, 250);
             this.btsubirimagen.Name = "btsubirimagen";
             this.btsubirimagen.Size = new System.Drawing.Size(214, 25);
@@ -261,6 +273,7 @@
             // 
             // btAccept
             // 
+            this.btAccept.ForeColor = System.Drawing.Color.Black;
             this.btAccept.Location = new System.Drawing.Point(519, 499);
             this.btAccept.Name = "btAccept";
             this.btAccept.Size = new System.Drawing.Size(138, 37);
@@ -271,6 +284,7 @@
             // 
             // btCancel
             // 
+            this.btCancel.ForeColor = System.Drawing.Color.Black;
             this.btCancel.Location = new System.Drawing.Point(663, 499);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(138, 36);

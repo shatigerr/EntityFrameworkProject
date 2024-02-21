@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="practicaEdifModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="practicaEdifModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Continentes">
           <Key>
             <PropertyRef Name="id_continente" />
@@ -27,7 +27,7 @@
           <Property Name="google_maps_link" Type="varchar" MaxLength="255" />
           <Property Name="web_link" Type="varchar" MaxLength="255" />
           <Property Name="wikipedia_link" Type="varchar" MaxLength="255" />
-          <Property Name="ImagenBase64" Type="varchar(max)" />
+          <Property Name="imagen_portada_base64" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Paises">
           <Key>
@@ -74,8 +74,7 @@
             <End Role="Paises" EntitySet="Paises" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="practicaEdifModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -102,8 +101,8 @@
           <Property Name="google_maps_link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="web_link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="wikipedia_link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="ImagenBase64" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Paises" Relationship="Self.FK__Edificios__id_pa__4F7CD00D" FromRole="EdificiosReligiosos" ToRole="Paises" />
+          <Property Name="ImagenBase64" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Paises">
           <Key>
@@ -169,6 +168,7 @@
           <EntitySetMapping Name="EdificiosReligiosos">
             <EntityTypeMapping TypeName="practicaEdifModel.EdificiosReligiosos">
               <MappingFragment StoreEntitySet="EdificiosReligiosos">
+                <ScalarProperty Name="ImagenBase64" ColumnName="imagen_portada_base64" />
                 <ScalarProperty Name="id_edificio" ColumnName="id_edificio" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
@@ -180,7 +180,6 @@
                 <ScalarProperty Name="google_maps_link" ColumnName="google_maps_link" />
                 <ScalarProperty Name="web_link" ColumnName="web_link" />
                 <ScalarProperty Name="wikipedia_link" ColumnName="wikipedia_link" />
-                <ScalarProperty Name="ImagenBase64" ColumnName="ImagenBase64" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

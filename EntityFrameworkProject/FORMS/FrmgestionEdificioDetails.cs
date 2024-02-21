@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace EntityFrameworkProject.FORMS
 {
@@ -17,6 +18,7 @@ namespace EntityFrameworkProject.FORMS
         int op;
         practicaEdifEntities1 practicaCtx;
         string base64String;
+        
         public FrmgestionEdificioDetails(practicaEdifEntities1 practicaCtx,int op)
         {
             this.practicaCtx = practicaCtx;
@@ -69,9 +71,10 @@ namespace EntityFrameworkProject.FORMS
 
         private void FrmgestionEdificioDetails_Load(object sender, EventArgs e)
         {
-            if(op != 2)
+            FrmgestionEdificios ed;
+            if(op == 2)
             {
-
+                
             }
 
             initCbContinente();

@@ -23,7 +23,8 @@ namespace EntityFrameworkProject
         private void edificiosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmGestionEdificios = new FrmgestionEdificios();
-            frmGestionEdificios.ShowDialog();
+            frmGestionEdificios.MdiParent = this;
+            frmGestionEdificios.Show();
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)

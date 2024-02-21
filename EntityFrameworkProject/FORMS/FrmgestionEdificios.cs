@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace EntityFrameworkProject.FORMS
 {
     public partial class FrmgestionEdificios : Form
     {
         practicaEdifEntities1 practicaCtx = new practicaEdifEntities1();
+        public EdificiosReligiosos edificiosReligios;
         public FrmgestionEdificios()
         {
             InitializeComponent();
@@ -25,10 +27,10 @@ namespace EntityFrameworkProject.FORMS
                                  select new
                                  {
                                      ID = ed.id_edificio,
-                                     Ubicación = ed.ubicacion,
                                      Nombre = ed.nombre,
                                      Capacidad = ed.capacidad,
                                      País = ed.Paises.nombre_pais,
+                                     Ubicación = ed.ubicacion,
                                      
                                  };
 
@@ -60,7 +62,18 @@ namespace EntityFrameworkProject.FORMS
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            FrmgestionEdificioDetails edificioDetails = new FrmgestionEdificioDetails(practicaCtx,1);
+            FrmgestionEdificioDetails edificioDetails = new FrmgestionEdificioDetails(practicaCtx, 1);
+            edificioDetails.MdiParent = (FrmMain)this.MdiParent;
+            edificioDetails.Show();
+        }
+
+        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            edificiosReligios = new EdificiosReligiosos();
+            edificiosReligios.id_edificio = (int)dgv.SelectedCells[0].Value;
+
+            FrmgestionEdificioDetails edificioDetails = new FrmgestionEdificioDetails(practicaCtx, 2);
+            edificioDetails.MdiParent = (FrmMain)this.MdiParent;
             edificioDetails.Show();
         }
     }
