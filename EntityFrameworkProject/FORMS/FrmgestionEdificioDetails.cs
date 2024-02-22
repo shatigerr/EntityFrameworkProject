@@ -17,13 +17,14 @@ namespace EntityFrameworkProject.FORMS
     public partial class FrmgestionEdificioDetails : Form
     {
         int op;
-        practicaEdifEntities2 practicaCtx;
+        practicaEdifEntities practicaCtx;
         public FrmgestionEdificios ed;
         string base64String;
         EdificiosReligiosos edificiosReligiosos;
+        Paises pais;
 
 
-        public FrmgestionEdificioDetails(practicaEdifEntities2 practicaCtx,int op)
+        public FrmgestionEdificioDetails(practicaEdifEntities practicaCtx,int op)
         {
             this.practicaCtx = practicaCtx;
             this.op = op;   
@@ -89,7 +90,11 @@ namespace EntityFrameworkProject.FORMS
 
         private void FrmgestionEdificioDetails_Load(object sender, EventArgs e)
         {
+            
             edificiosReligiosos = new EdificiosReligiosos();
+            pais = new Paises();
+
+
             initCbContinente();
             initCbPais();
             if (op == 2)
@@ -97,20 +102,23 @@ namespace EntityFrameworkProject.FORMS
                 edificiosReligiosos.id_edificio = ed.edificiosReligios.id_edificio;
                 tbId.Text = edificiosReligiosos.id_edificio.ToString();
                 edificiosReligiosos = practicaCtx.EdificiosReligiosos.Find(ed.edificiosReligios.id_edificio);
+                pais = practicaCtx.Paises.Find(edificiosReligiosos.id_pais);
+
 
                 tbId.Text = edificiosReligiosos.id_edificio.ToString();
                 tbNombre.Text = edificiosReligiosos.nombre.ToString();
                 tbCapacidad.Text = edificiosReligiosos.capacidad.ToString();
                 tbUbicacion.Text = edificiosReligiosos.ubicacion.ToString();
-                dateTimePicker1.Text = edificiosReligiosos.fecha_construccion.ToString();
+                dateTimePicker1.Value = edificiosReligiosos.fecha_construccion.Value;
                 tbreligion.Text = edificiosReligiosos.denominacion_religiosa.ToString();
-                cbPais.Text = edificiosReligiosos.Paises.nombre_pais.ToString();
-                cbContinente.Text = "";
+                cbPais.Text = pais.nombre_pais.ToString();
+                cbContinente.Text = pais.Continentes.nombre_continente.ToString();
                 tbgoogleMaps.Text = edificiosReligiosos.google_maps_link.ToString();
                 tbWikipedia.Text = edificiosReligiosos.wikipedia_link.ToString();
-                pbImagen.Image = Base64ToImage(edificiosReligiosos.ImagenBase64);
+                pbImagen.Image = edificiosReligiosos.ImagenBase64 != null ?  Base64ToImage(edificiosReligiosos.ImagenBase64) : EntityFrameworkProject.Properties.Resources.placeholder;
                 pbImagen.SizeMode = PictureBoxSizeMode.Zoom;
-
+                base64String = edificiosReligiosos.ImagenBase64;
+                
 
                 tbWeb.Text = edificiosReligiosos.web_link.ToString();
 
@@ -161,7 +169,6 @@ namespace EntityFrameworkProject.FORMS
         {
             if(cbPais.SelectedValue  != null)
             {
-
                 initCbPais();
             }
         }
@@ -171,8 +178,6 @@ namespace EntityFrameworkProject.FORMS
             EdificiosReligiosos edificios = new EdificiosReligiosos();
 
             this.Cursor = Cursors.WaitCursor;
-
-
             
             edificiosReligiosos.nombre = tbNombre.Text.Trim();
             edificiosReligiosos.ubicacion = tbUbicacion.Text.Trim();
@@ -185,17 +190,24 @@ namespace EntityFrameworkProject.FORMS
             edificiosReligiosos.web_link = tbWeb.Text.Trim();
             edificiosReligiosos.ImagenBase64 = base64String;
 
-            if(op == 2)
+            //FrmgestionEdificios frmgestion = new FrmgestionEdificios();
+
+            if (op == 2)
             {
                 try
                 {
                     
                     practicaCtx.SaveChanges();
+                    ed.loadDataGrid();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"NO SE HA PODIDO MODIFICAR EL EDIFICIO {ex}");
-
+                }
+                finally 
+                { 
+                    this.Cursor = Cursors.Default; 
+                    this.Close(); 
                 }
             }
             else
@@ -203,12 +215,18 @@ namespace EntityFrameworkProject.FORMS
                 try
                 {
 
-                    practicaCtx.EdificiosReligiosos.Add(edificios);
+                    practicaCtx.EdificiosReligiosos.Add(edificiosReligiosos);
                     practicaCtx.SaveChanges();
+                    ed.loadDataGrid();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Error al insertar el edificio religioso: {ex.Message}");
+                }
+                finally
+                {
+                    this.Cursor = Cursors.Default;
+                    this.Close();
                 }
             }       
                 

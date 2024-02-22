@@ -13,7 +13,7 @@ namespace EntityFrameworkProject.FORMS
 {
     public partial class FrmgestionEdificios : Form
     {
-        practicaEdifEntities2 practicaCtx = new practicaEdifEntities2();
+        practicaEdifEntities practicaCtx = new practicaEdifEntities();
         public EdificiosReligiosos edificiosReligios;
         public FrmgestionEdificios()
         {
@@ -22,6 +22,13 @@ namespace EntityFrameworkProject.FORMS
 
         private void gestionEdificios_Load(object sender, EventArgs e)
         {
+            loadDataGrid();
+        }
+
+        public void loadDataGrid()
+        {
+            //dgv.DataSource = null;
+            //dgv.Rows.Clear();
             var queryBuildings = from ed in practicaCtx.EdificiosReligiosos
                                  orderby ed.nombre
                                  select new
@@ -31,13 +38,11 @@ namespace EntityFrameworkProject.FORMS
                                      Capacidad = ed.capacidad,
                                      País = ed.Paises.nombre_pais,
                                      Ubicación = ed.ubicacion,
-                                     
                                  };
 
 
             dgv.DataSource = queryBuildings.ToList();
             dgv.AutoResizeColumns();
-
         }
 
         private void btDel_Click(object sender, EventArgs e)
@@ -47,7 +52,6 @@ namespace EntityFrameworkProject.FORMS
             {
                 EdificiosReligiosos edif = practicaCtx.EdificiosReligiosos.FirstOrDefault(ed => ed.id_edificio == id);                           // busquem a la taula de cursos per clau primària
                 practicaCtx.EdificiosReligiosos.Remove(edif);
-                
             }
             catch
             {
@@ -56,15 +60,20 @@ namespace EntityFrameworkProject.FORMS
             finally
             {
                 practicaCtx.SaveChanges();
+                loadDataGrid();
             }
             
         }
+
+
 
         private void btAdd_Click(object sender, EventArgs e)
         {
             FrmgestionEdificioDetails edificioDetails = new FrmgestionEdificioDetails(practicaCtx, 1);
             edificioDetails.MdiParent = (FrmMain)this.MdiParent;
+            edificioDetails.ed = this;
             edificioDetails.Show();
+
         }
 
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

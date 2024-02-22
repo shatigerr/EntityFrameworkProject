@@ -139,7 +139,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="practicaEdifEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="practicaEdifEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Continentes" EntityType="Self.Continentes" />
           <EntitySet Name="EdificiosReligiosos" EntityType="Self.EdificiosReligiosos" />
           <EntitySet Name="Paises" EntityType="Self.Paises" />
@@ -157,7 +157,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="practicaEdifModelStoreContainer" CdmEntityContainer="practicaEdifEntities2">
+        <EntityContainerMapping StorageEntityContainer="practicaEdifModelStoreContainer" CdmEntityContainer="practicaEdifEntities">
           <EntitySetMapping Name="Continentes">
             <EntityTypeMapping TypeName="practicaEdifModel.Continentes">
               <MappingFragment StoreEntitySet="Continentes">

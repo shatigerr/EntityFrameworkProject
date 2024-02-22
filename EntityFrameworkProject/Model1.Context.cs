@@ -13,10 +13,10 @@ namespace EntityFrameworkProject
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class practicaEdifEntities2 : DbContext
+    public partial class practicaEdifEntities : DbContext
     {
-        public practicaEdifEntities2()
-            : base("name=practicaEdifEntities2")
+        public practicaEdifEntities()
+            : base("name=practicaEdifEntities")
         {
         }
     
