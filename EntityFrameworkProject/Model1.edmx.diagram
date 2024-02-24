@@ -10,6 +10,8 @@
         <EntityTypeShape EntityType="practicaEdifModel.Paises" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
         <AssociationConnector Association="practicaEdifModel.FK__Paises__id_conti__4CA06362" ManuallyRouted="false" />
         <AssociationConnector Association="practicaEdifModel.FK__Edificios__id_pa__4F7CD00D" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="practicaEdifModel.Galeria" Width="1.5" PointX="7.5" PointY="2" />
+        <AssociationConnector Association="practicaEdifModel.FK__Galeria__id_edif__5CD6CB2B" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

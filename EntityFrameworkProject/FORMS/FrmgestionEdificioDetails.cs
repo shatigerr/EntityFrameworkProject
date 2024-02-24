@@ -22,6 +22,7 @@ namespace EntityFrameworkProject.FORMS
         string base64String;
         EdificiosReligiosos edificiosReligiosos;
         Paises pais;
+        List<string> ListaBase64;   
 
 
         public FrmgestionEdificioDetails(practicaEdifEntities practicaCtx,int op)
@@ -47,7 +48,8 @@ namespace EntityFrameworkProject.FORMS
                 pbImagen.SizeMode = PictureBoxSizeMode.Zoom;
 
                 
-                base64String = ImageToBase64(pbImagen.Image, System.Drawing.Imaging.ImageFormat.Jpeg);
+                //base64String = ImageToBase64(pbImagen.Image, System.Drawing.Imaging.ImageFormat.Jpeg);
+                base64String = ImageToBase642(filePath);
 
 
             }
@@ -69,7 +71,18 @@ namespace EntityFrameworkProject.FORMS
             }
         }
 
-            public static Image Base64ToImage(string base64String)
+        private string ImageToBase642(string imagePath)
+        {
+            // Leer los bytes de la imagen desde el archivo
+            byte[] imageBytes = File.ReadAllBytes(imagePath);
+
+            // Convertir el array de bytes a una cadena Base64
+            string base64String = Convert.ToBase64String(imageBytes);
+
+            return base64String;
+        }
+
+        public static Image Base64ToImage(string base64String)
             {
                 // Convertir la cadena Base64 a un array de bytes
                 byte[] imageBytes = Convert.FromBase64String(base64String);
@@ -90,7 +103,7 @@ namespace EntityFrameworkProject.FORMS
 
         private void FrmgestionEdificioDetails_Load(object sender, EventArgs e)
         {
-            
+            ListaBase64 = new List<string>();
             edificiosReligiosos = new EdificiosReligiosos();
             pais = new Paises();
 
@@ -192,45 +205,44 @@ namespace EntityFrameworkProject.FORMS
 
             //FrmgestionEdificios frmgestion = new FrmgestionEdificios();
 
-            if (op == 2)
+            try
             {
-                try
-                {
-                    
-                    practicaCtx.SaveChanges();
-                    ed.loadDataGrid();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"NO SE HA PODIDO MODIFICAR EL EDIFICIO {ex}");
-                }
-                finally 
-                { 
-                    this.Cursor = Cursors.Default; 
-                    this.Close(); 
-                }
+                if (op == 1) practicaCtx.EdificiosReligiosos.Add(edificiosReligiosos);
+                practicaCtx.SaveChanges();
+                ed.loadDataGrid();
+                insertarGaleria();
             }
-            else
+            catch (Exception ex)
+            {
+                MessageBox.Show($"NO SE HA PODIDO MODIFICAR EL EDIFICIO {ex}");
+            }
+
+
+            this.Cursor = Cursors.Default;
+            this.Close();
+        }
+
+        private void insertarGaleria()
+        {
+            
+            
+            foreach (string item in ListaBase64)
             {
                 try
                 {
-
-                    practicaCtx.EdificiosReligiosos.Add(edificiosReligiosos);
-                    practicaCtx.SaveChanges();
-                    ed.loadDataGrid();
+                    Galeria galeria = new Galeria();
+                    galeria.id_edificio = edificiosReligiosos.id_edificio;
+                    galeria.imagen_base64 = item;
+                    practicaCtx.Galeria.Add(galeria);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error al insertar el edificio religioso: {ex.Message}");
+                    MessageBox.Show("NO SE HAN PODIDO INSERTAR LAS IMAGENES " + ex);
                 }
-                finally
-                {
-                    this.Cursor = Cursors.Default;
-                    this.Close();
-                }
-            }       
                 
-           
+
+            }
+            practicaCtx.SaveChanges();
         }
 
         private void cbContinente_SelectedIndexChanged(object sender, EventArgs e)
@@ -248,6 +260,23 @@ namespace EntityFrameworkProject.FORMS
             {
                 cbPais.Enabled = false;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.gif;*.bmp|Todos los archivos|*.*";
+            openFileDialog1.Title = "Seleccionar imagen";
+            openFileDialog1.Multiselect = false; // Permitir solo la selección de un archivo
+
+            // Mostrar el diálogo y verificar si el usuario ha seleccionado un archivo
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                // Obtener la ruta del archivo seleccionado
+                
+                ListaBase64.Add(ImageToBase642(openFileDialog1.FileName));
+            }
+
         }
     }
 }

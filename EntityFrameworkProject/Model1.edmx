@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="practicaEdifModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="practicaEdifModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Continentes">
           <Key>
             <PropertyRef Name="id_continente" />
@@ -29,6 +29,14 @@
           <Property Name="wikipedia_link" Type="varchar" MaxLength="255" />
           <Property Name="ImagenBase64" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="Galeria">
+          <Key>
+            <PropertyRef Name="id_galeria" />
+          </Key>
+          <Property Name="id_galeria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_edificio" Type="int" />
+          <Property Name="imagen_base64" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="Paises">
           <Key>
             <PropertyRef Name="id_pais" />
@@ -49,6 +57,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Galeria__id_edif__5CD6CB2B">
+          <End Role="EdificiosReligiosos" Type="Self.EdificiosReligiosos" Multiplicity="0..1" />
+          <End Role="Galeria" Type="Self.Galeria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EdificiosReligiosos">
+              <PropertyRef Name="id_edificio" />
+            </Principal>
+            <Dependent Role="Galeria">
+              <PropertyRef Name="id_edificio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Paises__id_conti__4CA06362">
           <End Role="Continentes" Type="Self.Continentes" Multiplicity="0..1" />
           <End Role="Paises" Type="Self.Paises" Multiplicity="*" />
@@ -64,18 +84,22 @@
         <EntityContainer Name="practicaEdifModelStoreContainer">
           <EntitySet Name="Continentes" EntityType="Self.Continentes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EdificiosReligiosos" EntityType="Self.EdificiosReligiosos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Galeria" EntityType="Self.Galeria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Edificios__id_pa__4F7CD00D" Association="Self.FK__Edificios__id_pa__4F7CD00D">
             <End Role="Paises" EntitySet="Paises" />
             <End Role="EdificiosReligiosos" EntitySet="EdificiosReligiosos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Galeria__id_edif__5CD6CB2B" Association="Self.FK__Galeria__id_edif__5CD6CB2B">
+            <End Role="EdificiosReligiosos" EntitySet="EdificiosReligiosos" />
+            <End Role="Galeria" EntitySet="Galeria" />
           </AssociationSet>
           <AssociationSet Name="FK__Paises__id_conti__4CA06362" Association="Self.FK__Paises__id_conti__4CA06362">
             <End Role="Continentes" EntitySet="Continentes" />
             <End Role="Paises" EntitySet="Paises" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="practicaEdifModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -104,6 +128,7 @@
           <Property Name="wikipedia_link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ImagenBase64" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Paises" Relationship="Self.FK__Edificios__id_pa__4F7CD00D" FromRole="EdificiosReligiosos" ToRole="Paises" />
+          <NavigationProperty Name="Galeria" Relationship="practicaEdifModel.FK__Galeria__id_edif__5CD6CB2B" FromRole="EdificiosReligiosos" ToRole="Galeria" />
         </EntityType>
         <EntityType Name="Paises">
           <Key>
@@ -151,7 +176,33 @@
             <End Role="Paises" EntitySet="Paises" />
             <End Role="EdificiosReligiosos" EntitySet="EdificiosReligiosos" />
           </AssociationSet>
+          <EntitySet Name="Galeria" EntityType="practicaEdifModel.Galeria" />
+          <AssociationSet Name="FK__Galeria__id_edif__5CD6CB2B" Association="practicaEdifModel.FK__Galeria__id_edif__5CD6CB2B">
+            <End Role="EdificiosReligiosos" EntitySet="EdificiosReligiosos" />
+            <End Role="Galeria" EntitySet="Galeria" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Galeria">
+          <Key>
+            <PropertyRef Name="id_galeria" />
+          </Key>
+          <Property Name="id_galeria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_edificio" Type="Int32" />
+          <Property Name="imagen_base64" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EdificiosReligiosos" Relationship="practicaEdifModel.FK__Galeria__id_edif__5CD6CB2B" FromRole="Galeria" ToRole="EdificiosReligiosos" />
+        </EntityType>
+        <Association Name="FK__Galeria__id_edif__5CD6CB2B">
+          <End Type="practicaEdifModel.EdificiosReligiosos" Role="EdificiosReligiosos" Multiplicity="0..1" />
+          <End Type="practicaEdifModel.Galeria" Role="Galeria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EdificiosReligiosos">
+              <PropertyRef Name="id_edificio" />
+            </Principal>
+            <Dependent Role="Galeria">
+              <PropertyRef Name="id_edificio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -190,6 +241,15 @@
                 <ScalarProperty Name="id_pais" ColumnName="id_pais" />
                 <ScalarProperty Name="nombre_pais" ColumnName="nombre_pais" />
                 <ScalarProperty Name="id_continente" ColumnName="id_continente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Galeria">
+            <EntityTypeMapping TypeName="practicaEdifModel.Galeria">
+              <MappingFragment StoreEntitySet="Galeria">
+                <ScalarProperty Name="imagen_base64" ColumnName="imagen_base64" />
+                <ScalarProperty Name="id_edificio" ColumnName="id_edificio" />
+                <ScalarProperty Name="id_galeria" ColumnName="id_galeria" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
