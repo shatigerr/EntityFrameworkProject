@@ -44,8 +44,6 @@
             this.cbContinente = new System.Windows.Forms.ComboBox();
             this.cbPais = new System.Windows.Forms.ComboBox();
             this.lbPais = new System.Windows.Forms.Label();
-            this.tbgoogleMaps = new System.Windows.Forms.TextBox();
-            this.lbgoogleMaps = new System.Windows.Forms.Label();
             this.tbWikipedia = new System.Windows.Forms.TextBox();
             this.lbWikipedia = new System.Windows.Forms.Label();
             this.tbWeb = new System.Windows.Forms.TextBox();
@@ -58,14 +56,14 @@
             this.button1 = new System.Windows.Forms.Button();
             this.gbUrl = new System.Windows.Forms.GroupBox();
             this.gbLocation = new System.Windows.Forms.GroupBox();
-            this.gbInfo = new System.Windows.Forms.GroupBox();
-            this.tbResenya = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbX = new System.Windows.Forms.TextBox();
             this.tbY = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.tbX = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.gbInfo = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbResenya = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.gbUrl.SuspendLayout();
             this.gbLocation.SuspendLayout();
@@ -215,26 +213,9 @@
             this.lbPais.TabIndex = 14;
             this.lbPais.Text = "Pais";
             // 
-            // tbgoogleMaps
-            // 
-            this.tbgoogleMaps.Location = new System.Drawing.Point(101, 26);
-            this.tbgoogleMaps.Name = "tbgoogleMaps";
-            this.tbgoogleMaps.Size = new System.Drawing.Size(100, 22);
-            this.tbgoogleMaps.TabIndex = 17;
-            // 
-            // lbgoogleMaps
-            // 
-            this.lbgoogleMaps.AutoSize = true;
-            this.lbgoogleMaps.ForeColor = System.Drawing.Color.Black;
-            this.lbgoogleMaps.Location = new System.Drawing.Point(6, 29);
-            this.lbgoogleMaps.Name = "lbgoogleMaps";
-            this.lbgoogleMaps.Size = new System.Drawing.Size(89, 16);
-            this.lbgoogleMaps.TabIndex = 16;
-            this.lbgoogleMaps.Text = "Google Maps";
-            // 
             // tbWikipedia
             // 
-            this.tbWikipedia.Location = new System.Drawing.Point(292, 26);
+            this.tbWikipedia.Location = new System.Drawing.Point(80, 26);
             this.tbWikipedia.Name = "tbWikipedia";
             this.tbWikipedia.Size = new System.Drawing.Size(100, 22);
             this.tbWikipedia.TabIndex = 19;
@@ -243,7 +224,7 @@
             // 
             this.lbWikipedia.AutoSize = true;
             this.lbWikipedia.ForeColor = System.Drawing.Color.Black;
-            this.lbWikipedia.Location = new System.Drawing.Point(218, 29);
+            this.lbWikipedia.Location = new System.Drawing.Point(6, 29);
             this.lbWikipedia.Name = "lbWikipedia";
             this.lbWikipedia.Size = new System.Drawing.Size(68, 16);
             this.lbWikipedia.TabIndex = 18;
@@ -251,7 +232,7 @@
             // 
             // tbWeb
             // 
-            this.tbWeb.Location = new System.Drawing.Point(449, 26);
+            this.tbWeb.Location = new System.Drawing.Point(237, 26);
             this.tbWeb.Name = "tbWeb";
             this.tbWeb.Size = new System.Drawing.Size(100, 22);
             this.tbWeb.TabIndex = 21;
@@ -260,7 +241,7 @@
             // 
             this.lbWeb.AutoSize = true;
             this.lbWeb.ForeColor = System.Drawing.Color.Black;
-            this.lbWeb.Location = new System.Drawing.Point(407, 29);
+            this.lbWeb.Location = new System.Drawing.Point(195, 29);
             this.lbWeb.Name = "lbWeb";
             this.lbWeb.Size = new System.Drawing.Size(36, 16);
             this.lbWeb.TabIndex = 20;
@@ -324,15 +305,13 @@
             // 
             // gbUrl
             // 
-            this.gbUrl.Controls.Add(this.lbgoogleMaps);
-            this.gbUrl.Controls.Add(this.tbgoogleMaps);
             this.gbUrl.Controls.Add(this.lbWikipedia);
             this.gbUrl.Controls.Add(this.tbWikipedia);
             this.gbUrl.Controls.Add(this.lbWeb);
             this.gbUrl.Controls.Add(this.tbWeb);
             this.gbUrl.Location = new System.Drawing.Point(41, 494);
             this.gbUrl.Name = "gbUrl";
-            this.gbUrl.Size = new System.Drawing.Size(571, 70);
+            this.gbUrl.Size = new System.Drawing.Size(403, 70);
             this.gbUrl.TabIndex = 27;
             this.gbUrl.TabStop = false;
             this.gbUrl.Text = "URL";
@@ -357,6 +336,50 @@
             this.gbLocation.TabStop = false;
             this.gbLocation.Text = "Ubicacion";
             // 
+            // tbY
+            // 
+            this.tbY.Location = new System.Drawing.Point(233, 131);
+            this.tbY.Name = "tbY";
+            this.tbY.Size = new System.Drawing.Size(142, 22);
+            this.tbY.TabIndex = 20;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(213, 134);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(16, 16);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Y";
+            // 
+            // tbX
+            // 
+            this.tbX.Location = new System.Drawing.Point(59, 131);
+            this.tbX.Name = "tbX";
+            this.tbX.Size = new System.Drawing.Size(142, 22);
+            this.tbX.TabIndex = 18;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(39, 134);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 16);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "X";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(9, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 16);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Coordenadas:";
+            // 
             // gbInfo
             // 
             this.gbInfo.Controls.Add(this.label1);
@@ -374,15 +397,6 @@
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Informacion";
             // 
-            // tbResenya
-            // 
-            this.tbResenya.Location = new System.Drawing.Point(138, 103);
-            this.tbResenya.Multiline = true;
-            this.tbResenya.Name = "tbResenya";
-            this.tbResenya.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbResenya.Size = new System.Drawing.Size(254, 93);
-            this.tbResenya.TabIndex = 12;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -393,49 +407,14 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Reseña del edificio";
             // 
-            // label2
+            // tbResenya
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(9, 99);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 16);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Coordenadas:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(39, 134);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(15, 16);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "X";
-            // 
-            // tbX
-            // 
-            this.tbX.Location = new System.Drawing.Point(59, 131);
-            this.tbX.Name = "tbX";
-            this.tbX.Size = new System.Drawing.Size(142, 22);
-            this.tbX.TabIndex = 18;
-            // 
-            // tbY
-            // 
-            this.tbY.Location = new System.Drawing.Point(233, 131);
-            this.tbY.Name = "tbY";
-            this.tbY.Size = new System.Drawing.Size(142, 22);
-            this.tbY.TabIndex = 20;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(213, 134);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 16);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Y";
+            this.tbResenya.Location = new System.Drawing.Point(138, 103);
+            this.tbResenya.Multiline = true;
+            this.tbResenya.Name = "tbResenya";
+            this.tbResenya.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbResenya.Size = new System.Drawing.Size(254, 93);
+            this.tbResenya.TabIndex = 12;
             // 
             // FrmgestionEdificioDetails
             // 
@@ -487,8 +466,6 @@
         private System.Windows.Forms.ComboBox cbContinente;
         private System.Windows.Forms.ComboBox cbPais;
         private System.Windows.Forms.Label lbPais;
-        private System.Windows.Forms.TextBox tbgoogleMaps;
-        private System.Windows.Forms.Label lbgoogleMaps;
         private System.Windows.Forms.TextBox tbWikipedia;
         private System.Windows.Forms.Label lbWikipedia;
         private System.Windows.Forms.TextBox tbWeb;

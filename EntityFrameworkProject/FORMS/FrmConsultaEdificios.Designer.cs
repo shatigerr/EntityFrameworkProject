@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.cbContinente = new System.Windows.Forms.ComboBox();
             this.cbPais = new System.Windows.Forms.ComboBox();
@@ -45,23 +45,23 @@
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgv.Location = new System.Drawing.Point(12, 12);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
@@ -77,7 +77,7 @@
             // 
             this.cbContinente.Enabled = false;
             this.cbContinente.FormattingEnabled = true;
-            this.cbContinente.Location = new System.Drawing.Point(755, 12);
+            this.cbContinente.Location = new System.Drawing.Point(97, 600);
             this.cbContinente.Name = "cbContinente";
             this.cbContinente.Size = new System.Drawing.Size(121, 24);
             this.cbContinente.TabIndex = 14;
@@ -87,7 +87,7 @@
             // 
             this.cbPais.Enabled = false;
             this.cbPais.FormattingEnabled = true;
-            this.cbPais.Location = new System.Drawing.Point(755, 79);
+            this.cbPais.Location = new System.Drawing.Point(274, 600);
             this.cbPais.Name = "cbPais";
             this.cbPais.Size = new System.Drawing.Size(121, 24);
             this.cbPais.TabIndex = 15;
@@ -97,7 +97,7 @@
             // 
             this.lbCont.AutoSize = true;
             this.lbCont.ForeColor = System.Drawing.Color.White;
-            this.lbCont.Location = new System.Drawing.Point(672, 15);
+            this.lbCont.Location = new System.Drawing.Point(14, 603);
             this.lbCont.Name = "lbCont";
             this.lbCont.Size = new System.Drawing.Size(77, 16);
             this.lbCont.TabIndex = 16;
@@ -107,7 +107,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(706, 82);
+            this.label1.Location = new System.Drawing.Point(234, 603);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 16);
             this.label1.TabIndex = 17;
@@ -119,11 +119,11 @@
             this.cbFiltres.Checked = true;
             this.cbFiltres.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbFiltres.ForeColor = System.Drawing.Color.White;
-            this.cbFiltres.Location = new System.Drawing.Point(820, 133);
+            this.cbFiltres.Location = new System.Drawing.Point(430, 640);
             this.cbFiltres.Name = "cbFiltres";
-            this.cbFiltres.Size = new System.Drawing.Size(56, 20);
+            this.cbFiltres.Size = new System.Drawing.Size(111, 20);
             this.cbFiltres.TabIndex = 18;
-            this.cbFiltres.Text = "Tots";
+            this.cbFiltres.Text = "Mostrar todos";
             this.cbFiltres.UseVisualStyleBackColor = true;
             this.cbFiltres.CheckedChanged += new System.EventHandler(this.cbFiltres_CheckedChanged);
             // 
@@ -132,12 +132,13 @@
             this.cbEnablePais.AutoSize = true;
             this.cbEnablePais.Checked = true;
             this.cbEnablePais.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbEnablePais.Enabled = false;
             this.cbEnablePais.ForeColor = System.Drawing.Color.White;
-            this.cbEnablePais.Location = new System.Drawing.Point(894, 79);
+            this.cbEnablePais.Location = new System.Drawing.Point(430, 603);
             this.cbEnablePais.Name = "cbEnablePais";
-            this.cbEnablePais.Size = new System.Drawing.Size(123, 20);
+            this.cbEnablePais.Size = new System.Drawing.Size(114, 20);
             this.cbEnablePais.TabIndex = 19;
-            this.cbEnablePais.Text = "Buscar per pais";
+            this.cbEnablePais.Text = "Filtrar por pais";
             this.cbEnablePais.UseVisualStyleBackColor = true;
             this.cbEnablePais.CheckedChanged += new System.EventHandler(this.cbEnablePais_CheckedChanged);
             // 
@@ -146,7 +147,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
-            this.ClientSize = new System.Drawing.Size(1095, 587);
+            this.ClientSize = new System.Drawing.Size(1095, 675);
             this.Controls.Add(this.cbEnablePais);
             this.Controls.Add(this.cbFiltres);
             this.Controls.Add(this.label1);

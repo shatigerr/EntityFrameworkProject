@@ -24,12 +24,11 @@
           <Property Name="denominacion_religiosa" Type="varchar" MaxLength="100" />
           <Property Name="ressenya" Type="text" />
           <Property Name="id_pais" Type="int" />
-          <Property Name="google_maps_link" Type="varchar" MaxLength="255" />
           <Property Name="web_link" Type="varchar" MaxLength="255" />
           <Property Name="wikipedia_link" Type="varchar" MaxLength="255" />
           <Property Name="ImagenBase64" Type="varchar(max)" />
-          <Property Name="cordX" Type="real" />
           <Property Name="cordY" Type="real" />
+          <Property Name="cordX" Type="real" />
         </EntityType>
         <EntityType Name="Galeria">
           <Key>
@@ -127,7 +126,6 @@
           <Property Name="denominacion_religiosa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ressenya" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="id_pais" Type="Int32" />
-          <Property Name="google_maps_link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="web_link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="wikipedia_link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ImagenBase64" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -236,7 +234,6 @@
                 <ScalarProperty Name="denominacion_religiosa" ColumnName="denominacion_religiosa" />
                 <ScalarProperty Name="ressenya" ColumnName="ressenya" />
                 <ScalarProperty Name="id_pais" ColumnName="id_pais" />
-                <ScalarProperty Name="google_maps_link" ColumnName="google_maps_link" />
                 <ScalarProperty Name="web_link" ColumnName="web_link" />
                 <ScalarProperty Name="wikipedia_link" ColumnName="wikipedia_link" />
                 <ScalarProperty Name="ImagenBase64" ColumnName="ImagenBase64" />

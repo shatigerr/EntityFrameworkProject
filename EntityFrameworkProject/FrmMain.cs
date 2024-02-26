@@ -61,7 +61,8 @@ namespace EntityFrameworkProject
         private void edificiosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmConsultaEdificios frmConsultaEdificios = new FrmConsultaEdificios();
-            frmConsultaEdificios.ShowDialog();
+            frmConsultaEdificios.MdiParent = this;
+            frmConsultaEdificios.Show();
         }
 
         private void FrmMain_Load(object sender, EventArgs e)

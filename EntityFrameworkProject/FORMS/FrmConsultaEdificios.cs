@@ -37,9 +37,8 @@ namespace EntityFrameworkProject.FORMS
                                  {
                                      ID = ed.id_edificio,
                                      Nombre = ed.nombre,
-                                     Capacidad = ed.capacidad,
+                                     Reseña = ed.ressenya,
                                      País = ed.Paises.nombre_pais,
-                                     Ubicación = ed.ubicacion,
                                  };
 
 
@@ -102,7 +101,13 @@ namespace EntityFrameworkProject.FORMS
             var query = from e in practicaCtx.EdificiosReligiosos
                         orderby e.nombre
                         where e.id_pais == (int)cbPais.SelectedValue
-                        select e;
+                        select new
+                        {
+                            ID = e.id_edificio,
+                            Nombre = e.nombre,
+                            Reseña = e.ressenya,
+                            País = e.Paises.nombre_pais,
+                        };
 
             dgv.DataSource = query.ToList();
         }
@@ -112,19 +117,32 @@ namespace EntityFrameworkProject.FORMS
             var query = from e in practicaCtx.EdificiosReligiosos
                         orderby e.nombre
                         where e.Paises.id_continente == (int)cbContinente.SelectedValue
-                        select e;
+                        select new
+                        {
+                            ID = e.id_edificio,
+                            Nombre = e.nombre,
+                            Reseña = e.ressenya,
+                            País = e.Paises.nombre_pais,
+                        };
 
             dgv.DataSource = query.ToList();
         }
 
         private void cbContinente_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (!cbFiltres.Checked) initCbPais();
+            if (!cbFiltres.Checked)
+            {
+                initCbPais();
+                if (!cbEnablePais.Checked)
+                {
+                    consultaPerContinent();
+                }
+            }
         }
 
         private void cbPais_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (!cbFiltres.Checked) consultaPerPais();
+            if (!cbFiltres.Checked && cbEnablePais.Checked) consultaPerPais();
         }
 
         private void cbEnablePais_CheckedChanged(object sender, EventArgs e)

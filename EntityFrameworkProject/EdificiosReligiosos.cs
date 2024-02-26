@@ -28,7 +28,6 @@ namespace EntityFrameworkProject
         public string denominacion_religiosa { get; set; }
         public string ressenya { get; set; }
         public Nullable<int> id_pais { get; set; }
-        public string google_maps_link { get; set; }
         public string web_link { get; set; }
         public string wikipedia_link { get; set; }
         public string ImagenBase64 { get; set; }

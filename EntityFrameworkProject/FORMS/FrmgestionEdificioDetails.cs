@@ -113,7 +113,6 @@ namespace EntityFrameworkProject.FORMS
                 tbreligion.Text = edificiosReligiosos.denominacion_religiosa != null ? edificiosReligiosos.denominacion_religiosa.ToString() : "";
                 cbPais.Text = pais.nombre_pais.ToString();
                 cbContinente.Text = pais.Continentes.nombre_continente.ToString();
-                tbgoogleMaps.Text = edificiosReligiosos.google_maps_link != null ? edificiosReligiosos.google_maps_link.ToString() : "";
                 tbWikipedia.Text = edificiosReligiosos.wikipedia_link != null ? edificiosReligiosos.wikipedia_link.ToString() : "" ;
                 tbResenya.Text = edificiosReligiosos.ressenya != null ? edificiosReligiosos.ressenya.ToString() : "";
                 tbWeb.Text = edificiosReligiosos.web_link != null ? edificiosReligiosos.web_link.ToString() : "";
@@ -191,7 +190,6 @@ namespace EntityFrameworkProject.FORMS
                 edificiosReligiosos.fecha_construccion = dateTimePicker1.Value;
                 edificiosReligiosos.denominacion_religiosa = tbreligion.Text.Trim();
                 edificiosReligiosos.id_pais = (int)cbPais.SelectedValue;
-                edificiosReligiosos.google_maps_link = tbgoogleMaps.Text.Trim();
                 edificiosReligiosos.wikipedia_link = tbWikipedia.Text.Trim();
                 edificiosReligiosos.web_link = tbWeb.Text.Trim();
                 edificiosReligiosos.ressenya = tbResenya.Text;
@@ -201,7 +199,7 @@ namespace EntityFrameworkProject.FORMS
 
             }catch(Exception ex)
             {
-                MessageBox.Show("El formato de alguno de los datos insertados no es el correcto");
+                MessageBox.Show("El formato de alguno de los datos insertados no es el correcto. Error: " + ex);
             }
 
             try
