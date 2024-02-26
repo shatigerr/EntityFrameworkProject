@@ -57,5 +57,16 @@ namespace EntityFrameworkProject
         {
             toolStripMenuItem1.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+
+        private void edificiosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmConsultaEdificios frmConsultaEdificios = new FrmConsultaEdificios();
+            frmConsultaEdificios.ShowDialog();
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

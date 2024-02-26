@@ -22,13 +22,13 @@ namespace EntityFrameworkProject.FORMS
 
         private void gestionEdificios_Load(object sender, EventArgs e)
         {
+            
             loadDataGrid();
         }
 
         public void loadDataGrid()
         {
-            //dgv.DataSource = null;
-            //dgv.Rows.Clear();
+            
             var queryBuildings = from ed in practicaCtx.EdificiosReligiosos
                                  orderby ed.nombre
                                  select new
@@ -50,7 +50,7 @@ namespace EntityFrameworkProject.FORMS
             int id = (int)dgv.SelectedCells[0].Value;
             try
             {
-                EdificiosReligiosos edif = practicaCtx.EdificiosReligiosos.FirstOrDefault(ed => ed.id_edificio == id);                           // busquem a la taula de cursos per clau primària
+                EdificiosReligiosos edif = practicaCtx.EdificiosReligiosos.FirstOrDefault(ed => ed.id_edificio == id);
                 practicaCtx.EdificiosReligiosos.Remove(edif);
             }
             catch
@@ -85,6 +85,16 @@ namespace EntityFrameworkProject.FORMS
             edificioDetails.MdiParent = (FrmMain)this.MdiParent;
             edificioDetails.ed = this;
             edificioDetails.Show();
+        }
+
+        private IEnumerable<Galeria> consultarGaleriaPerIdEdifici(int id)
+        {
+            return from g in practicaCtx.Galeria
+                        where g.id_edificio == id
+                        select g;
+            
+
+            
         }
     }
 }

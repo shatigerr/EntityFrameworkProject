@@ -62,6 +62,12 @@
     <Compile Include="EdificiosReligiosos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="FORMS\FrmConsultaEdificios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\FrmConsultaEdificios.Designer.cs">
+      <DependentUpon>FrmConsultaEdificios.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORMS\FrmgestionEdificioDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FORMS\FrmConsultaEdificios.resx">
+      <DependentUpon>FrmConsultaEdificios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FORMS\FrmgestionEdificioDetails.resx">
       <DependentUpon>FrmgestionEdificioDetails.cs</DependentUpon>
     </EmbeddedResource>

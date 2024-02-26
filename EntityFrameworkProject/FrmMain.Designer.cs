@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.menuMain = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.edificiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paisesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,7 +39,6 @@
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.edificiosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.time = new System.Windows.Forms.Timer(this.components);
             this.menuMain.SuspendLayout();
             this.SuspendLayout();
@@ -58,10 +58,23 @@
             this.menuMain.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.menuMain.Location = new System.Drawing.Point(0, 0);
             this.menuMain.Name = "menuMain";
-            this.menuMain.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuMain.Size = new System.Drawing.Size(71, 366);
+            this.menuMain.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuMain.Size = new System.Drawing.Size(74, 450);
             this.menuMain.TabIndex = 1;
             this.menuMain.Text = "menu";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.Gainsboro;
+            this.toolStripMenuItem1.Image = global::EntityFrameworkProject.Properties.Resources.menuHamburger;
+            this.toolStripMenuItem1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem1.Margin = new System.Windows.Forms.Padding(5, 10, 0, 30);
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(58, 54);
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // gestionarToolStripMenuItem
             // 
@@ -77,27 +90,27 @@
             this.gestionarToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.gestionarToolStripMenuItem.Margin = new System.Windows.Forms.Padding(5, 10, 0, 10);
             this.gestionarToolStripMenuItem.Name = "gestionarToolStripMenuItem";
-            this.gestionarToolStripMenuItem.Size = new System.Drawing.Size(57, 54);
+            this.gestionarToolStripMenuItem.Size = new System.Drawing.Size(58, 54);
             this.gestionarToolStripMenuItem.Text = "Gestionar Edificios";
             this.gestionarToolStripMenuItem.ToolTipText = "Gestionar Edificios";
             // 
             // edificiosToolStripMenuItem
             // 
             this.edificiosToolStripMenuItem.Name = "edificiosToolStripMenuItem";
-            this.edificiosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.edificiosToolStripMenuItem.Size = new System.Drawing.Size(189, 28);
             this.edificiosToolStripMenuItem.Text = "Edificios";
             this.edificiosToolStripMenuItem.Click += new System.EventHandler(this.edificiosToolStripMenuItem_Click);
             // 
             // paisesToolStripMenuItem
             // 
             this.paisesToolStripMenuItem.Name = "paisesToolStripMenuItem";
-            this.paisesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.paisesToolStripMenuItem.Size = new System.Drawing.Size(189, 28);
             this.paisesToolStripMenuItem.Text = "Paises";
             // 
             // continentesToolStripMenuItem
             // 
             this.continentesToolStripMenuItem.Name = "continentesToolStripMenuItem";
-            this.continentesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.continentesToolStripMenuItem.Size = new System.Drawing.Size(189, 28);
             this.continentesToolStripMenuItem.Text = "Continentes";
             // 
             // salirToolStripMenuItem
@@ -111,7 +124,7 @@
             this.salirToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.salirToolStripMenuItem.Margin = new System.Windows.Forms.Padding(5, 10, 0, 10);
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(57, 54);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(58, 54);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -127,27 +140,15 @@
             this.consultasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.consultasToolStripMenuItem.Margin = new System.Windows.Forms.Padding(5, 10, 0, 10);
             this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
-            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(57, 54);
+            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(58, 54);
             this.consultasToolStripMenuItem.Text = "Hacer Consultas";
             // 
             // edificiosToolStripMenuItem1
             // 
             this.edificiosToolStripMenuItem1.Name = "edificiosToolStripMenuItem1";
-            this.edificiosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.edificiosToolStripMenuItem1.Size = new System.Drawing.Size(161, 28);
             this.edificiosToolStripMenuItem1.Text = "Edificios";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.toolStripMenuItem1.Image = global::EntityFrameworkProject.Properties.Resources.menuHamburger;
-            this.toolStripMenuItem1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem1.Margin = new System.Windows.Forms.Padding(5, 10, 0, 30);
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(57, 54);
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.edificiosToolStripMenuItem1.Click += new System.EventHandler(this.edificiosToolStripMenuItem1_Click);
             // 
             // time
             // 
@@ -156,20 +157,21 @@
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuMain);
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuMain;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmMain";
             this.Text = "Edificios Religiosos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
             this.ResumeLayout(false);

@@ -59,6 +59,13 @@
             this.gbUrl = new System.Windows.Forms.GroupBox();
             this.gbLocation = new System.Windows.Forms.GroupBox();
             this.gbInfo = new System.Windows.Forms.GroupBox();
+            this.tbResenya = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbX = new System.Windows.Forms.TextBox();
+            this.tbY = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.gbUrl.SuspendLayout();
             this.gbLocation.SuspendLayout();
@@ -285,7 +292,7 @@
             // btAccept
             // 
             this.btAccept.ForeColor = System.Drawing.Color.Black;
-            this.btAccept.Location = new System.Drawing.Point(41, 433);
+            this.btAccept.Location = new System.Drawing.Point(41, 592);
             this.btAccept.Name = "btAccept";
             this.btAccept.Size = new System.Drawing.Size(106, 37);
             this.btAccept.TabIndex = 24;
@@ -296,7 +303,7 @@
             // btCancel
             // 
             this.btCancel.ForeColor = System.Drawing.Color.Black;
-            this.btCancel.Location = new System.Drawing.Point(163, 434);
+            this.btCancel.Location = new System.Drawing.Point(163, 593);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(106, 36);
             this.btCancel.TabIndex = 25;
@@ -323,7 +330,7 @@
             this.gbUrl.Controls.Add(this.tbWikipedia);
             this.gbUrl.Controls.Add(this.lbWeb);
             this.gbUrl.Controls.Add(this.tbWeb);
-            this.gbUrl.Location = new System.Drawing.Point(41, 344);
+            this.gbUrl.Location = new System.Drawing.Point(41, 494);
             this.gbUrl.Name = "gbUrl";
             this.gbUrl.Size = new System.Drawing.Size(571, 70);
             this.gbUrl.TabIndex = 27;
@@ -332,21 +339,28 @@
             // 
             // gbLocation
             // 
+            this.gbLocation.Controls.Add(this.tbY);
+            this.gbLocation.Controls.Add(this.label4);
+            this.gbLocation.Controls.Add(this.tbX);
+            this.gbLocation.Controls.Add(this.label3);
+            this.gbLocation.Controls.Add(this.label2);
             this.gbLocation.Controls.Add(this.lbContinente);
             this.gbLocation.Controls.Add(this.lbUbicacion);
             this.gbLocation.Controls.Add(this.tbUbicacion);
             this.gbLocation.Controls.Add(this.cbContinente);
             this.gbLocation.Controls.Add(this.lbPais);
             this.gbLocation.Controls.Add(this.cbPais);
-            this.gbLocation.Location = new System.Drawing.Point(41, 221);
+            this.gbLocation.Location = new System.Drawing.Point(41, 312);
             this.gbLocation.Name = "gbLocation";
-            this.gbLocation.Size = new System.Drawing.Size(403, 103);
+            this.gbLocation.Size = new System.Drawing.Size(403, 176);
             this.gbLocation.TabIndex = 28;
             this.gbLocation.TabStop = false;
             this.gbLocation.Text = "Ubicacion";
             // 
             // gbInfo
             // 
+            this.gbInfo.Controls.Add(this.label1);
+            this.gbInfo.Controls.Add(this.tbResenya);
             this.gbInfo.Controls.Add(this.lbCapacidad);
             this.gbInfo.Controls.Add(this.dateTimePicker1);
             this.gbInfo.Controls.Add(this.tbCapacidad);
@@ -355,16 +369,79 @@
             this.gbInfo.Controls.Add(this.tbreligion);
             this.gbInfo.Location = new System.Drawing.Point(41, 97);
             this.gbInfo.Name = "gbInfo";
-            this.gbInfo.Size = new System.Drawing.Size(403, 106);
+            this.gbInfo.Size = new System.Drawing.Size(403, 209);
             this.gbInfo.TabIndex = 29;
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Informacion";
+            // 
+            // tbResenya
+            // 
+            this.tbResenya.Location = new System.Drawing.Point(138, 103);
+            this.tbResenya.Multiline = true;
+            this.tbResenya.Name = "tbResenya";
+            this.tbResenya.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbResenya.Size = new System.Drawing.Size(254, 93);
+            this.tbResenya.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(9, 106);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(123, 16);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Reseña del edificio";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(9, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 16);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Coordenadas:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(39, 134);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 16);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "X";
+            // 
+            // tbX
+            // 
+            this.tbX.Location = new System.Drawing.Point(59, 131);
+            this.tbX.Name = "tbX";
+            this.tbX.Size = new System.Drawing.Size(142, 22);
+            this.tbX.TabIndex = 18;
+            // 
+            // tbY
+            // 
+            this.tbY.Location = new System.Drawing.Point(233, 131);
+            this.tbY.Name = "tbY";
+            this.tbY.Size = new System.Drawing.Size(142, 22);
+            this.tbY.TabIndex = 20;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(213, 134);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(16, 16);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Y";
             // 
             // FrmgestionEdificioDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 491);
+            this.ClientSize = new System.Drawing.Size(784, 641);
             this.Controls.Add(this.gbInfo);
             this.Controls.Add(this.gbLocation);
             this.Controls.Add(this.gbUrl);
@@ -425,5 +502,12 @@
         private System.Windows.Forms.GroupBox gbUrl;
         private System.Windows.Forms.GroupBox gbLocation;
         private System.Windows.Forms.GroupBox gbInfo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbResenya;
+        private System.Windows.Forms.TextBox tbY;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbX;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

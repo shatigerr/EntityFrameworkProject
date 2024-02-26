@@ -28,6 +28,8 @@
           <Property Name="web_link" Type="varchar" MaxLength="255" />
           <Property Name="wikipedia_link" Type="varchar" MaxLength="255" />
           <Property Name="ImagenBase64" Type="varchar(max)" />
+          <Property Name="cordX" Type="real" />
+          <Property Name="cordY" Type="real" />
         </EntityType>
         <EntityType Name="Galeria">
           <Key>
@@ -35,7 +37,7 @@
           </Key>
           <Property Name="id_galeria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_edificio" Type="int" />
-          <Property Name="imagen_base64" Type="varchar(max)" />
+          <Property Name="imagen_base64" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Paises">
           <Key>
@@ -57,8 +59,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Galeria__id_edif__5CD6CB2B">
-          <End Role="EdificiosReligiosos" Type="Self.EdificiosReligiosos" Multiplicity="0..1" />
+        <Association Name="FK__Galeria__id_edif__6FE99F9F">
+          <End Role="EdificiosReligiosos" Type="Self.EdificiosReligiosos" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Galeria" Type="Self.Galeria" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EdificiosReligiosos">
@@ -90,7 +94,7 @@
             <End Role="Paises" EntitySet="Paises" />
             <End Role="EdificiosReligiosos" EntitySet="EdificiosReligiosos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Galeria__id_edif__5CD6CB2B" Association="Self.FK__Galeria__id_edif__5CD6CB2B">
+          <AssociationSet Name="FK__Galeria__id_edif__6FE99F9F" Association="Self.FK__Galeria__id_edif__6FE99F9F">
             <End Role="EdificiosReligiosos" EntitySet="EdificiosReligiosos" />
             <End Role="Galeria" EntitySet="Galeria" />
           </AssociationSet>
@@ -129,6 +133,8 @@
           <Property Name="ImagenBase64" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Paises" Relationship="Self.FK__Edificios__id_pa__4F7CD00D" FromRole="EdificiosReligiosos" ToRole="Paises" />
           <NavigationProperty Name="Galeria" Relationship="practicaEdifModel.FK__Galeria__id_edif__5CD6CB2B" FromRole="EdificiosReligiosos" ToRole="Galeria" />
+          <Property Name="cordX" Type="Single" />
+          <Property Name="cordY" Type="Single" />
         </EntityType>
         <EntityType Name="Paises">
           <Key>
@@ -188,7 +194,7 @@
           </Key>
           <Property Name="id_galeria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_edificio" Type="Int32" />
-          <Property Name="imagen_base64" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="imagen_base64" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="EdificiosReligiosos" Relationship="practicaEdifModel.FK__Galeria__id_edif__5CD6CB2B" FromRole="Galeria" ToRole="EdificiosReligiosos" />
         </EntityType>
         <Association Name="FK__Galeria__id_edif__5CD6CB2B">
@@ -220,6 +226,8 @@
           <EntitySetMapping Name="EdificiosReligiosos">
             <EntityTypeMapping TypeName="practicaEdifModel.EdificiosReligiosos">
               <MappingFragment StoreEntitySet="EdificiosReligiosos">
+                <ScalarProperty Name="cordY" ColumnName="cordY" />
+                <ScalarProperty Name="cordX" ColumnName="cordX" />
                 <ScalarProperty Name="id_edificio" ColumnName="id_edificio" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />

@@ -32,6 +32,8 @@ namespace EntityFrameworkProject
         public string web_link { get; set; }
         public string wikipedia_link { get; set; }
         public string ImagenBase64 { get; set; }
+        public Nullable<float> cordX { get; set; }
+        public Nullable<float> cordY { get; set; }
     
         public virtual Paises Paises { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
