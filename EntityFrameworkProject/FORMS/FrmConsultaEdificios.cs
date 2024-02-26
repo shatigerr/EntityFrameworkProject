@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +17,9 @@ namespace EntityFrameworkProject.FORMS
     public partial class FrmConsultaEdificios : Form
     {
         practicaEdifEntities practicaCtx;
+        EdificiosReligiosos edificiosReligiosos;
+        List<string> galeria = new List<string>();
+        int elements = 0;
         public FrmConsultaEdificios()
         {
             InitializeComponent();
@@ -157,6 +163,81 @@ namespace EntityFrameworkProject.FORMS
                 cbPais.Enabled = false;
                 consultaPerContinent();
             }
+        }
+
+        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            edificiosReligiosos = new EdificiosReligiosos();
+            edificiosReligiosos = practicaCtx.EdificiosReligiosos.Find(dgv.SelectedCells[0].Value);
+
+            pbPortada.Image = edificiosReligiosos.ImagenBase64 != null ? Base64ToImage(edificiosReligiosos.ImagenBase64) : Properties.Resources.placeholder;
+            pbPortada.SizeMode = PictureBoxSizeMode.Zoom;
+            lbNombre.Text = edificiosReligiosos.nombre;
+            lbResenya.Text = edificiosReligiosos.ressenya != null ? edificiosReligiosos.ressenya : "";
+            lbFecha.Text = edificiosReligiosos.fecha_construccion.ToString();
+            lbPais.Text = edificiosReligiosos.Paises.nombre_pais;
+            lbUbicacion.Text = edificiosReligiosos.ubicacion;
+            lbCapacidad.Text = $"{edificiosReligiosos.capacidad} Personas";
+
+            galeria = consultarGaleria(edificiosReligiosos.id_edificio);
+
+            pbGaleria.Image = galeria.Count > 0 ? Base64ToImage(galeria[0]) : Properties.Resources.placeholder;
+
+
+
+
+
+
+
+        }
+
+        private List<string> consultarGaleria(int id)
+        {
+            List<string> list = new List<string>();
+            var query = from g in practicaCtx.Galeria
+                        where g.id_edificio == id
+                        select new
+                        {
+                            imagen = g.imagen_base64
+                        };
+
+            foreach (var item in query.ToList())
+            {
+                list.Add(item.imagen.ToString());
+            }
+
+            return list;
+        }
+
+        public static Image Base64ToImage(string base64String)
+        {
+            // Convertir la cadena Base64 a un array de bytes
+            byte[] imageBytes = Convert.FromBase64String(base64String);
+
+            // Crear un flujo de memoria a partir del array de bytes
+            using (MemoryStream ms = new MemoryStream(imageBytes))
+            {
+                // Crear una imagen a partir del flujo de memoria
+                Image image = Image.FromStream(ms);
+                return image;
+            }
+        }
+
+        private void btnMaps_Click(object sender, EventArgs e)
+        {
+            string x = edificiosReligiosos.cordX.ToString().Replace(",",".");
+            string y = edificiosReligiosos.cordY.ToString().Replace(",", ".");
+            string urlGoogleMaps = $"https://www.google.com/maps?q={x},{y}&t=k";
+
+            Process.Start(urlGoogleMaps);
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //TODO Controlar limite array
+            elements++;
+            pbGaleria.Image = Base64ToImage(galeria[elements]);
         }
     }
 }
