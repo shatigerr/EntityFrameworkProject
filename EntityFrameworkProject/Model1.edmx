@@ -37,6 +37,7 @@
           <Property Name="id_galeria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_edificio" Type="int" />
           <Property Name="imagen_base64" Type="nvarchar(max)" />
+          <Property Name="Preview" Type="bit" />
         </EntityType>
         <EntityType Name="Paises">
           <Key>
@@ -194,6 +195,7 @@
           <Property Name="id_edificio" Type="Int32" />
           <Property Name="imagen_base64" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="EdificiosReligiosos" Relationship="practicaEdifModel.FK__Galeria__id_edif__5CD6CB2B" FromRole="Galeria" ToRole="EdificiosReligiosos" />
+          <Property Name="Preview" Type="Boolean" />
         </EntityType>
         <Association Name="FK__Galeria__id_edif__5CD6CB2B">
           <End Type="practicaEdifModel.EdificiosReligiosos" Role="EdificiosReligiosos" Multiplicity="0..1" />
@@ -252,6 +254,7 @@
           <EntitySetMapping Name="Galeria">
             <EntityTypeMapping TypeName="practicaEdifModel.Galeria">
               <MappingFragment StoreEntitySet="Galeria">
+                <ScalarProperty Name="Preview" ColumnName="Preview" />
                 <ScalarProperty Name="imagen_base64" ColumnName="imagen_base64" />
                 <ScalarProperty Name="id_edificio" ColumnName="id_edificio" />
                 <ScalarProperty Name="id_galeria" ColumnName="id_galeria" />

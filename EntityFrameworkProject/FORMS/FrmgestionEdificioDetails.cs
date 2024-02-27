@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +13,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+
+
 
 namespace EntityFrameworkProject.FORMS
 {
@@ -218,9 +222,32 @@ namespace EntityFrameworkProject.FORMS
                 MessageBox.Show($"NO SE HA PODIDO MODIFICAR EL EDIFICIO {ex}");
             }
 
+            insertarPreview();
+
 
             this.Cursor = Cursors.Default;
             this.Close();
+        }
+
+        private void insertarPreview()
+        {
+            // Inicializar Selenium WebDriver (asegúrate de agregar las referencias necesarias a Selenium WebDriver y ChromeDriver)
+            using (IWebDriver driver = new ChromeDriver())
+            {
+                // Abrir la página web
+                driver.Navigate().GoToUrl("https://www.youtube.com");
+
+                // Tomar una captura de pantalla
+                var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+
+                // Convertir la captura de pantalla a base64
+                string base64Screenshot = ImageToBase642(screenshot.ToString());
+
+                // Imprimir el resultado
+                Console.WriteLine("Captura de pantalla convertida a base64:");
+                Console.WriteLine(base64Screenshot);
+            }
+
         }
 
         private void insertarGaleria()

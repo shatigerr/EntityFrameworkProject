@@ -17,6 +17,7 @@ namespace EntityFrameworkProject
         public int id_galeria { get; set; }
         public Nullable<int> id_edificio { get; set; }
         public string imagen_base64 { get; set; }
+        public Nullable<bool> Preview { get; set; }
     
         public virtual EdificiosReligiosos EdificiosReligiosos { get; set; }
     }

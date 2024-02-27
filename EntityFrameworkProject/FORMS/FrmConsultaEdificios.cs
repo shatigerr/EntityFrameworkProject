@@ -235,9 +235,32 @@ namespace EntityFrameworkProject.FORMS
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //TODO Controlar limite array
-            elements++;
-            pbGaleria.Image = Base64ToImage(galeria[elements]);
+            if (galeria.Count-1 != elements )
+            {
+                button2.Enabled = true;
+                button1.Enabled = true;
+                elements++;
+                pbGaleria.Image = Base64ToImage(galeria[elements]);
+                if (galeria.Count - 1 == elements)
+                {
+                    button2.Enabled = false;
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (elements != 0)
+            {
+                button1.Enabled = true;
+                button2.Enabled = true;
+                elements--;
+                pbGaleria.Image = Base64ToImage(galeria[elements]);
+                if (elements == 0)
+                {
+                    button1.Enabled = false;
+                }
+            }
         }
     }
 }
