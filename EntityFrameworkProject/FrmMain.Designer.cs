@@ -33,12 +33,8 @@
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.edificiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.paisesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.continentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.edificiosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.time = new System.Windows.Forms.Timer(this.components);
             this.fadeTimer = new System.Windows.Forms.Timer(this.components);
@@ -62,7 +58,7 @@
             this.menuMain.Location = new System.Drawing.Point(0, 0);
             this.menuMain.Name = "menuMain";
             this.menuMain.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuMain.Size = new System.Drawing.Size(155, 450);
+            this.menuMain.Size = new System.Drawing.Size(84, 450);
             this.menuMain.TabIndex = 1;
             this.menuMain.Text = "menu";
             // 
@@ -76,16 +72,12 @@
             this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripMenuItem1.Margin = new System.Windows.Forms.Padding(5, 10, 0, 30);
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(139, 54);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(68, 54);
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // gestionarToolStripMenuItem
             // 
             this.gestionarToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.gestionarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.edificiosToolStripMenuItem,
-            this.paisesToolStripMenuItem,
-            this.continentesToolStripMenuItem});
             this.gestionarToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gestionarToolStripMenuItem.ForeColor = System.Drawing.Color.Gainsboro;
             this.gestionarToolStripMenuItem.Image = global::EntityFrameworkProject.Properties.Resources.manageIcon;
@@ -93,28 +85,10 @@
             this.gestionarToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.gestionarToolStripMenuItem.Margin = new System.Windows.Forms.Padding(5, 10, 0, 10);
             this.gestionarToolStripMenuItem.Name = "gestionarToolStripMenuItem";
-            this.gestionarToolStripMenuItem.Size = new System.Drawing.Size(139, 54);
+            this.gestionarToolStripMenuItem.Size = new System.Drawing.Size(68, 54);
             this.gestionarToolStripMenuItem.Text = "Gestionar Edificios";
             this.gestionarToolStripMenuItem.ToolTipText = "Gestionar Edificios";
-            // 
-            // edificiosToolStripMenuItem
-            // 
-            this.edificiosToolStripMenuItem.Name = "edificiosToolStripMenuItem";
-            this.edificiosToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
-            this.edificiosToolStripMenuItem.Text = "Edificios";
-            this.edificiosToolStripMenuItem.Click += new System.EventHandler(this.edificiosToolStripMenuItem_Click);
-            // 
-            // paisesToolStripMenuItem
-            // 
-            this.paisesToolStripMenuItem.Name = "paisesToolStripMenuItem";
-            this.paisesToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
-            this.paisesToolStripMenuItem.Text = "Paises";
-            // 
-            // continentesToolStripMenuItem
-            // 
-            this.continentesToolStripMenuItem.Name = "continentesToolStripMenuItem";
-            this.continentesToolStripMenuItem.Size = new System.Drawing.Size(224, 28);
-            this.continentesToolStripMenuItem.Text = "Continentes";
+            this.gestionarToolStripMenuItem.Click += new System.EventHandler(this.edificiosToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -127,15 +101,13 @@
             this.salirToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.salirToolStripMenuItem.Margin = new System.Windows.Forms.Padding(5, 10, 0, 10);
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(139, 54);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(68, 54);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // consultasToolStripMenuItem
             // 
             this.consultasToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.consultasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.edificiosToolStripMenuItem1});
             this.consultasToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.consultasToolStripMenuItem.ForeColor = System.Drawing.Color.Gainsboro;
             this.consultasToolStripMenuItem.Image = global::EntityFrameworkProject.Properties.Resources.lupa;
@@ -143,15 +115,9 @@
             this.consultasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.consultasToolStripMenuItem.Margin = new System.Windows.Forms.Padding(5, 10, 0, 10);
             this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
-            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(139, 54);
+            this.consultasToolStripMenuItem.Size = new System.Drawing.Size(68, 54);
             this.consultasToolStripMenuItem.Text = "Hacer Consultas";
-            // 
-            // edificiosToolStripMenuItem1
-            // 
-            this.edificiosToolStripMenuItem1.Name = "edificiosToolStripMenuItem1";
-            this.edificiosToolStripMenuItem1.Size = new System.Drawing.Size(224, 28);
-            this.edificiosToolStripMenuItem1.Text = "Edificios";
-            this.edificiosToolStripMenuItem1.Click += new System.EventHandler(this.edificiosToolStripMenuItem1_Click);
+            this.consultasToolStripMenuItem.Click += new System.EventHandler(this.edificiosToolStripMenuItem1_Click);
             // 
             // userToolStripMenuItem
             // 
@@ -163,7 +129,7 @@
             this.userToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.userToolStripMenuItem.Margin = new System.Windows.Forms.Padding(5, 10, 0, 10);
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(139, 64);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(68, 64);
             this.userToolStripMenuItem.Text = "Usuario";
             this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
@@ -205,11 +171,7 @@
 
         private System.Windows.Forms.MenuStrip menuMain;
         private System.Windows.Forms.ToolStripMenuItem gestionarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem edificiosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem paisesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem continentesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem edificiosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Timer time;

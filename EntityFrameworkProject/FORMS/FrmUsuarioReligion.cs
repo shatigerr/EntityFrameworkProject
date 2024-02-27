@@ -43,6 +43,7 @@ namespace EntityFrameworkProject.FORMS
 
             practicaCtx.Usuarios.Add(usuarios);
             practicaCtx.SaveChanges();
+            this.Close();
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -54,6 +55,11 @@ namespace EntityFrameworkProject.FORMS
         {
             ReleaseCapture();
             SendMessage(Handle, 0x112, 0xf012, 0);
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
