@@ -555,6 +555,7 @@
             this.Controls.Add(this.tbId);
             this.Controls.Add(this.lbId);
             this.Controls.Add(this.dgv);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
