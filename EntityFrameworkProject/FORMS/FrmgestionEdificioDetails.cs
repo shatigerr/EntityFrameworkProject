@@ -61,6 +61,20 @@ namespace EntityFrameworkProject.FORMS
             
         }
 
+        static string ConvertScreenshotToBase64(Screenshot screenshot)
+        {
+            byte[] screenshotAsByteArray = Convert.FromBase64String(screenshot.AsBase64EncodedString);
+            using (MemoryStream stream = new MemoryStream(screenshotAsByteArray))
+            {
+                Image screenshotImage = Image.FromStream(stream);
+                using (MemoryStream base64Stream = new MemoryStream())
+                {
+                    screenshotImage.Save(base64Stream, System.Drawing.Imaging.ImageFormat.Png);
+                    return Convert.ToBase64String(base64Stream.ToArray());
+                }
+            }
+        }
+
 
         private string ImageToBase642(string imagePath)
         {
@@ -210,19 +224,26 @@ namespace EntityFrameworkProject.FORMS
             {
                 if(Convert.ToInt32(tbCapacidad.Text.Trim()) > 0 && tbNombre.Text.Length > 0 && tbreligion.Text.Length > 0)
                 {
-                    if (op == 1) practicaCtx.EdificiosReligiosos.Add(edificiosReligiosos);
+                    if (op == 1)
+                    {
+                        practicaCtx.EdificiosReligiosos.Add(edificiosReligiosos);
+                        insertarPreview();
+                        practicaCtx.SaveChanges();
+                    }
                     practicaCtx.SaveChanges();
                     ed.loadDataGrid();
                     insertarGaleria();
+                    
 
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"NO SE HA PODIDO MODIFICAR EL EDIFICIO {ex}");
+                MessageBox.Show($"NO SE HA PODIDO REALIZAR LA OPERACION CORRECTAMENTE");
             }
 
-            insertarPreview();
+            
+ 
 
 
             this.Cursor = Cursors.Default;
@@ -231,21 +252,18 @@ namespace EntityFrameworkProject.FORMS
 
         private void insertarPreview()
         {
-            // Inicializar Selenium WebDriver (asegúrate de agregar las referencias necesarias a Selenium WebDriver y ChromeDriver)
             using (IWebDriver driver = new ChromeDriver())
             {
-                // Abrir la página web
-                driver.Navigate().GoToUrl("https://www.youtube.com");
-
-                // Tomar una captura de pantalla
+                Galeria galeria = new Galeria();
+                driver.Navigate().GoToUrl(edificiosReligiosos.web_link);       
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+                string base64Screenshot = ConvertScreenshotToBase64(screenshot);
+                galeria.imagen_base64 = base64Screenshot;
+                galeria.id_edificio = edificiosReligiosos.id_edificio;
+                galeria.Preview = true;
 
-                // Convertir la captura de pantalla a base64
-                string base64Screenshot = ImageToBase642(screenshot.ToString());
-
-                // Imprimir el resultado
-                Console.WriteLine("Captura de pantalla convertida a base64:");
-                Console.WriteLine(base64Screenshot);
+                practicaCtx.Galeria.Add(galeria);
+                practicaCtx.SaveChanges();
             }
 
         }

@@ -27,8 +27,8 @@
           <Property Name="web_link" Type="varchar" MaxLength="255" />
           <Property Name="wikipedia_link" Type="varchar" MaxLength="255" />
           <Property Name="ImagenBase64" Type="varchar(max)" />
-          <Property Name="cordY" Type="real" />
           <Property Name="cordX" Type="real" />
+          <Property Name="cordY" Type="real" />
         </EntityType>
         <EntityType Name="Galeria">
           <Key>

@@ -179,9 +179,38 @@ namespace EntityFrameworkProject.FORMS
             lbUbicacion.Text = edificiosReligiosos.ubicacion;
             lbCapacidad.Text = $"{edificiosReligiosos.capacidad} Personas";
 
+            var queryPreview = from g in practicaCtx.Galeria
+                               where g.id_edificio == edificiosReligiosos.id_edificio && g.Preview == true
+                               select new
+                               {
+                                   image = g.imagen_base64
+                               };
+            var list = queryPreview.ToList();
+            
+            pbPreview.Image = list.Count > 0 ? Base64ToImage(list[0].image.ToString()) : Properties.Resources.placeholder;
+            pbPreview.SizeMode = PictureBoxSizeMode.Zoom;
             galeria = consultarGaleria(edificiosReligiosos.id_edificio);
+            if(galeria.Count >0)
+            {
+                if (galeria.Count == 1)
+                {
+                    button2.Enabled = false;
+                    button1.Enabled = false;
+                }
+                else
+                {
+                    button2.Enabled = true;
 
-            pbGaleria.Image = galeria.Count > 0 ? Base64ToImage(galeria[0]) : Properties.Resources.placeholder;
+                }
+                pbGaleria.Image = Base64ToImage(galeria[0]);
+
+            }
+            else
+            {
+                button1.Enabled = false;
+                button2.Enabled = false;
+                pbGaleria.Image = Properties.Resources.placeholder;
+            }
 
 
 
@@ -195,7 +224,7 @@ namespace EntityFrameworkProject.FORMS
         {
             List<string> list = new List<string>();
             var query = from g in practicaCtx.Galeria
-                        where g.id_edificio == id
+                        where g.id_edificio == id where g.Preview == null
                         select new
                         {
                             imagen = g.imagen_base64
@@ -261,6 +290,16 @@ namespace EntityFrameworkProject.FORMS
                     button1.Enabled = false;
                 }
             }
+        }
+
+        private void btnWeb_MouseHover(object sender, EventArgs e)
+        {
+            pbPreview.Visible = true;
+        }
+
+        private void btnWeb_MouseLeave(object sender, EventArgs e)
+        {
+            pbPreview.Visible = false;
         }
     }
 }
