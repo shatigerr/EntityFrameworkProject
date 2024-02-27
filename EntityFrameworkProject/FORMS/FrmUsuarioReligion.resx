@@ -117,32 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="userToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAJgSURBVGhD7Zo7axRRGIY3BIJ1JIKaiD9CK4uIVoIGW7EX
-        NRfLIIKF/0Cx8IaFpUWwiVrYefkLidfOxErJBRQvrM+789oIkt2ZOeE75jzwQNjsvt87zMnO2dl0CoVC
-        obDT6Xa7B3AWn+Iyblr9rMdmcMJPzxcOYj/exp+4Fb/wIR70y/OC4qdxAwdlHacckwcUvoQ6Y3XRa+cc
-        FxuK6sw2Odg/KCP2mabgONZZxv9Cy3uf4+NBufu9mu1y1/GxoJguPf28Gw+KMsc9Jg6UmuvVS8O0x8SB
-        Uk+qbklY9Jg4UOpt1S0Jyx4TB0q1+e78NxseEwcXS4bHxMG9kuExcaBTyiW95jFxoNTrqlsSljwmDpTa
-        cZclfYhPxQWPiQOlJjDF1vIHxttaCord61Vsl1uOjwfldEtHH+naYg33Oj4mFDyBbSxt3QA45djYUFSf
-        nJre4pl1XB5QeArrLG8t45OOyQuKj+F11DvtVuisPsDYf7P9wEHoXtc0PsYl1DZU6udFvIgxLz2FQqFQ
-        +B/gMjOMh/Ec3sBnqO+DP+FXu+rH9Dtdr/XcQzjsmNhQdA/qmvoIv2BdPuMCnscxx8eAQiN4FnXHo58d
-        1aAoUxuWMzjisdsPw3fjFVzB7eIjXsZR10gPw3RG9YV3kyXbFM2ex12ulQYGTOIHjMI7POJ67UHoEF7D
-        FPesmqJOV3HIdZuhILyJ0bmDzQ+aEP1/VS7MuHZ9CHlfZWXBG9euDyHaEeXCpmvXh5BXVVYWPHft+hBy
-        DFPsoNrmO066djMIOo4v8RtGQ51e4FHXLRQKhUKhEJJO5zepfBzQFo8/iQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <metadata name="time.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>129, 17</value>
-  </metadata>
-  <metadata name="fadeTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>219, 17</value>
-  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAQEAAAAEAIAAoQgAAFgAAACgAAABAAAAAgAAAAAEAIAAAAAAAAEAAABMLAAATCwAAAAAAAAAA

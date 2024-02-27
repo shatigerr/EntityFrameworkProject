@@ -43,6 +43,7 @@ namespace EntityFrameworkProject
                 consultasToolStripMenuItem.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                 salirToolStripMenuItem.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                 toolStripMenuItem1.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+                userToolStripMenuItem.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
             }
             else
             {
@@ -50,6 +51,7 @@ namespace EntityFrameworkProject
                 consultasToolStripMenuItem.DisplayStyle = ToolStripItemDisplayStyle.Image;
                 salirToolStripMenuItem.DisplayStyle = ToolStripItemDisplayStyle.Image;
                 toolStripMenuItem1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+                userToolStripMenuItem.DisplayStyle = ToolStripItemDisplayStyle.Image;
             }
         }
 
@@ -81,6 +83,14 @@ namespace EntityFrameworkProject
                 fadeTimer.Stop();
                 this.Close();
             }
+        }
+
+        private void userToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmUsuarioReligion frm = new FrmUsuarioReligion();
+            frm.MdiParent = this;
+            frm.Show();
+
         }
     }
 }

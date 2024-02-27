@@ -27,8 +27,8 @@
           <Property Name="web_link" Type="varchar" MaxLength="255" />
           <Property Name="wikipedia_link" Type="varchar" MaxLength="255" />
           <Property Name="ImagenBase64" Type="varchar(max)" />
-          <Property Name="cordX" Type="real" />
           <Property Name="cordY" Type="real" />
+          <Property Name="cordX" Type="real" />
         </EntityType>
         <EntityType Name="Galeria">
           <Key>
@@ -46,6 +46,14 @@
           <Property Name="id_pais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre_pais" Type="varchar" MaxLength="50" />
           <Property Name="id_continente" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_denominacion_religiosa" Type="int" />
         </EntityType>
         <Association Name="FK__Edificios__id_pa__4F7CD00D">
           <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
@@ -85,11 +93,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Usuarios__id_den__05D8E0BE">
+          <End Role="EdificiosReligiosos" Type="Self.EdificiosReligiosos" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EdificiosReligiosos">
+              <PropertyRef Name="id_edificio" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="id_denominacion_religiosa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="practicaEdifModelStoreContainer">
           <EntitySet Name="Continentes" EntityType="Self.Continentes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EdificiosReligiosos" EntityType="Self.EdificiosReligiosos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Galeria" EntityType="Self.Galeria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Edificios__id_pa__4F7CD00D" Association="Self.FK__Edificios__id_pa__4F7CD00D">
             <End Role="Paises" EntitySet="Paises" />
             <End Role="EdificiosReligiosos" EntitySet="EdificiosReligiosos" />
@@ -101,6 +122,10 @@
           <AssociationSet Name="FK__Paises__id_conti__4CA06362" Association="Self.FK__Paises__id_conti__4CA06362">
             <End Role="Continentes" EntitySet="Continentes" />
             <End Role="Paises" EntitySet="Paises" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__id_den__05D8E0BE" Association="Self.FK__Usuarios__id_den__05D8E0BE">
+            <End Role="EdificiosReligiosos" EntitySet="EdificiosReligiosos" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -134,6 +159,7 @@
           <NavigationProperty Name="Galeria" Relationship="practicaEdifModel.FK__Galeria__id_edif__5CD6CB2B" FromRole="EdificiosReligiosos" ToRole="Galeria" />
           <Property Name="cordX" Type="Single" />
           <Property Name="cordY" Type="Single" />
+          <NavigationProperty Name="Usuarios" Relationship="practicaEdifModel.FK__Usuarios__id_den__05D8E0BE" FromRole="EdificiosReligiosos" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="Paises">
           <Key>
@@ -186,6 +212,11 @@
             <End Role="EdificiosReligiosos" EntitySet="EdificiosReligiosos" />
             <End Role="Galeria" EntitySet="Galeria" />
           </AssociationSet>
+          <EntitySet Name="Usuarios" EntityType="practicaEdifModel.Usuarios" />
+          <AssociationSet Name="FK__Usuarios__id_den__05D8E0BE" Association="practicaEdifModel.FK__Usuarios__id_den__05D8E0BE">
+            <End Role="EdificiosReligiosos" EntitySet="EdificiosReligiosos" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Galeria">
           <Key>
@@ -206,6 +237,27 @@
             </Principal>
             <Dependent Role="Galeria">
               <PropertyRef Name="id_edificio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_denominacion_religiosa" Type="Int32" />
+          <NavigationProperty Name="EdificiosReligiosos" Relationship="practicaEdifModel.FK__Usuarios__id_den__05D8E0BE" FromRole="Usuarios" ToRole="EdificiosReligiosos" />
+        </EntityType>
+        <Association Name="FK__Usuarios__id_den__05D8E0BE">
+          <End Type="practicaEdifModel.EdificiosReligiosos" Role="EdificiosReligiosos" Multiplicity="0..1" />
+          <End Type="practicaEdifModel.Usuarios" Role="Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EdificiosReligiosos">
+              <PropertyRef Name="id_edificio" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="id_denominacion_religiosa" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -258,6 +310,15 @@
                 <ScalarProperty Name="imagen_base64" ColumnName="imagen_base64" />
                 <ScalarProperty Name="id_edificio" ColumnName="id_edificio" />
                 <ScalarProperty Name="id_galeria" ColumnName="id_galeria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="practicaEdifModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="id_denominacion_religiosa" ColumnName="id_denominacion_religiosa" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

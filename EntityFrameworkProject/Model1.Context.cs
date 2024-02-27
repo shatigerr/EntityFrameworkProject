@@ -29,5 +29,6 @@ namespace EntityFrameworkProject
         public virtual DbSet<EdificiosReligiosos> EdificiosReligiosos { get; set; }
         public virtual DbSet<Paises> Paises { get; set; }
         public virtual DbSet<Galeria> Galeria { get; set; }
+        public virtual DbSet<Usuarios> Usuarios { get; set; }
     }
 }

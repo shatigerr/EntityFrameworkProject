@@ -220,7 +220,16 @@ namespace EntityFrameworkProject.FORMS
             lbUbicacion.Text = edificiosReligiosos.ubicacion;
             lbCapacidad.Text = $"{edificiosReligiosos.capacidad} Personas";
             loadPreview();
+            qttSeguidors();
 
+        }
+
+        private void qttSeguidors()
+        {
+            var querySeguidors = (from s in practicaCtx.Usuarios
+                                 where s.id_denominacion_religiosa == edificiosReligiosos.id_edificio
+                                 select s).Count();
+            lbSeguidors.Text = querySeguidors.ToString();
         }
 
         

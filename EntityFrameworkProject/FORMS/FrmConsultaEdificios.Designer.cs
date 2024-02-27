@@ -50,21 +50,24 @@
             this.button2 = new System.Windows.Forms.Button();
             this.lbPais = new System.Windows.Forms.Label();
             this.panelDetails = new System.Windows.Forms.Panel();
-            this.pbPortada = new System.Windows.Forms.PictureBox();
-            this.pbPreview = new System.Windows.Forms.PictureBox();
-            this.pbGaleria = new System.Windows.Forms.PictureBox();
             this.lbSelectInfo = new System.Windows.Forms.Label();
             this.panelGrab = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbPortada = new System.Windows.Forms.PictureBox();
+            this.pbPreview = new System.Windows.Forms.PictureBox();
+            this.pbGaleria = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.lbSeguidors = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panelDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPortada)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbGaleria)).BeginInit();
             this.panelGrab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPortada)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGaleria)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv
@@ -298,6 +301,8 @@
             // 
             // panelDetails
             // 
+            this.panelDetails.Controls.Add(this.lbSeguidors);
+            this.panelDetails.Controls.Add(this.pictureBox3);
             this.panelDetails.Controls.Add(this.pbPortada);
             this.panelDetails.Controls.Add(this.btnWikipedia);
             this.panelDetails.Controls.Add(this.pbPreview);
@@ -317,36 +322,6 @@
             this.panelDetails.Size = new System.Drawing.Size(456, 648);
             this.panelDetails.TabIndex = 34;
             this.panelDetails.Visible = false;
-            // 
-            // pbPortada
-            // 
-            this.pbPortada.BackColor = System.Drawing.Color.Transparent;
-            this.pbPortada.Location = new System.Drawing.Point(3, 3);
-            this.pbPortada.Name = "pbPortada";
-            this.pbPortada.Size = new System.Drawing.Size(132, 117);
-            this.pbPortada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPortada.TabIndex = 29;
-            this.pbPortada.TabStop = false;
-            // 
-            // pbPreview
-            // 
-            this.pbPreview.BackColor = System.Drawing.Color.Transparent;
-            this.pbPreview.Location = new System.Drawing.Point(127, 427);
-            this.pbPreview.Name = "pbPreview";
-            this.pbPreview.Size = new System.Drawing.Size(197, 172);
-            this.pbPreview.TabIndex = 33;
-            this.pbPreview.TabStop = false;
-            this.pbPreview.Visible = false;
-            // 
-            // pbGaleria
-            // 
-            this.pbGaleria.BackColor = System.Drawing.Color.Transparent;
-            this.pbGaleria.Location = new System.Drawing.Point(12, 234);
-            this.pbGaleria.Name = "pbGaleria";
-            this.pbGaleria.Size = new System.Drawing.Size(422, 302);
-            this.pbGaleria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbGaleria.TabIndex = 28;
-            this.pbGaleria.TabStop = false;
             // 
             // lbSelectInfo
             // 
@@ -392,6 +367,57 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // pbPortada
+            // 
+            this.pbPortada.BackColor = System.Drawing.Color.Transparent;
+            this.pbPortada.Location = new System.Drawing.Point(3, 3);
+            this.pbPortada.Name = "pbPortada";
+            this.pbPortada.Size = new System.Drawing.Size(132, 117);
+            this.pbPortada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPortada.TabIndex = 29;
+            this.pbPortada.TabStop = false;
+            // 
+            // pbPreview
+            // 
+            this.pbPreview.BackColor = System.Drawing.Color.Transparent;
+            this.pbPreview.Location = new System.Drawing.Point(127, 427);
+            this.pbPreview.Name = "pbPreview";
+            this.pbPreview.Size = new System.Drawing.Size(197, 172);
+            this.pbPreview.TabIndex = 33;
+            this.pbPreview.TabStop = false;
+            this.pbPreview.Visible = false;
+            // 
+            // pbGaleria
+            // 
+            this.pbGaleria.BackColor = System.Drawing.Color.Transparent;
+            this.pbGaleria.Location = new System.Drawing.Point(12, 234);
+            this.pbGaleria.Name = "pbGaleria";
+            this.pbGaleria.Size = new System.Drawing.Size(422, 302);
+            this.pbGaleria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbGaleria.TabIndex = 28;
+            this.pbGaleria.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::EntityFrameworkProject.Properties.Resources.user;
+            this.pictureBox3.Location = new System.Drawing.Point(365, 196);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 34;
+            this.pictureBox3.TabStop = false;
+            // 
+            // lbSeguidors
+            // 
+            this.lbSeguidors.AutoSize = true;
+            this.lbSeguidors.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSeguidors.ForeColor = System.Drawing.Color.White;
+            this.lbSeguidors.Location = new System.Drawing.Point(402, 196);
+            this.lbSeguidors.Name = "lbSeguidors";
+            this.lbSeguidors.Size = new System.Drawing.Size(31, 29);
+            this.lbSeguidors.TabIndex = 35;
+            this.lbSeguidors.Text = "X";
+            // 
             // FrmConsultaEdificios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -419,12 +445,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.panelDetails.ResumeLayout(false);
             this.panelDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPortada)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbGaleria)).EndInit();
             this.panelGrab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPortada)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGaleria)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,5 +485,7 @@
         private System.Windows.Forms.Panel panelGrab;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label lbSeguidors;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

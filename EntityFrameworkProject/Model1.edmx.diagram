@@ -12,6 +12,8 @@
         <AssociationConnector Association="practicaEdifModel.FK__Edificios__id_pa__4F7CD00D" ManuallyRouted="false" />
         <EntityTypeShape EntityType="practicaEdifModel.Galeria" Width="1.5" PointX="7.5" PointY="2" />
         <AssociationConnector Association="practicaEdifModel.FK__Galeria__id_edif__5CD6CB2B" />
+        <EntityTypeShape EntityType="practicaEdifModel.Usuarios" Width="1.5" PointX="7.5" PointY="5.125" />
+        <AssociationConnector Association="practicaEdifModel.FK__Usuarios__id_den__05D8E0BE" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -18,6 +18,7 @@ namespace EntityFrameworkProject
         public EdificiosReligiosos()
         {
             this.Galeria = new HashSet<Galeria>();
+            this.Usuarios = new HashSet<Usuarios>();
         }
     
         public int id_edificio { get; set; }
@@ -37,5 +38,7 @@ namespace EntityFrameworkProject
         public virtual Paises Paises { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Galeria> Galeria { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Usuarios> Usuarios { get; set; }
     }
 }
