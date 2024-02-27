@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
@@ -34,7 +35,24 @@ namespace EntityFrameworkProject.FORMS
             this.practicaCtx = practicaCtx;
             this.op = op;   
             InitializeComponent();
+            //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr one, int two, int three, int four);
+
+        /*[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );*/
 
         private void btsubirimagen_Click(object sender, EventArgs e)
         {
@@ -101,15 +119,18 @@ namespace EntityFrameworkProject.FORMS
                 }
             }
 
-        private void btCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        
 
         private void FrmgestionEdificioDetails_Load(object sender, EventArgs e)
         {
             ListaBase64 = new List<string>();
             edificiosReligiosos = new EdificiosReligiosos();
+            if (op == 1)
+            {
+                pbClose.Visible = true;
+                practicaCtx.EdificiosReligiosos.Add(edificiosReligiosos);
+                practicaCtx.SaveChanges();
+            }
             pais = new Paises();
 
 
@@ -117,6 +138,7 @@ namespace EntityFrameworkProject.FORMS
             initCbPais();
             if (op == 2)
             {
+                pbClose.Visible = false;
                 edificiosReligiosos.id_edificio = ed.edificiosReligios.id_edificio;
                 tbId.Text = edificiosReligiosos.id_edificio.ToString();
                 edificiosReligiosos = practicaCtx.EdificiosReligiosos.Find(ed.edificiosReligios.id_edificio);
@@ -140,7 +162,8 @@ namespace EntityFrameworkProject.FORMS
                 pbImagen.Image = edificiosReligiosos.ImagenBase64 != null ?  Base64ToImage(edificiosReligiosos.ImagenBase64) : EntityFrameworkProject.Properties.Resources.placeholder;
                 pbImagen.SizeMode = PictureBoxSizeMode.Zoom;
                 base64String = edificiosReligiosos.ImagenBase64;
-                
+
+                updateDataGridGaleria();
                 
                 
                 //cbContinente.Text = paises.Continentes.nombre_continente;
@@ -193,7 +216,6 @@ namespace EntityFrameworkProject.FORMS
 
         private void btAccept_Click(object sender, EventArgs e)
         {
-            EdificiosReligiosos edificios = new EdificiosReligiosos();
 
             this.Cursor = Cursors.WaitCursor;
 
@@ -217,24 +239,19 @@ namespace EntityFrameworkProject.FORMS
 
             }catch(Exception ex)
             {
-                MessageBox.Show("El formato de alguno de los datos insertados no es el correcto. Error: " + ex);
+                MessageBox.Show("El formato de alguno de los datos insertados no es el correcto. Error: ");
+                practicaCtx.EdificiosReligiosos.Remove(edificiosReligiosos);
+                practicaCtx.SaveChanges();
+
             }
 
             try
             {
                 if(Convert.ToInt32(tbCapacidad.Text.Trim()) > 0 && tbNombre.Text.Length > 0 && tbreligion.Text.Length > 0)
                 {
-                    if (op == 1)
-                    {
-                        practicaCtx.EdificiosReligiosos.Add(edificiosReligiosos);
-                        insertarPreview();
-                        practicaCtx.SaveChanges();
-                    }
                     practicaCtx.SaveChanges();
                     ed.loadDataGrid();
-                    insertarGaleria();
-                    
-
+                    //insertarGaleria();
                 }
             }
             catch (Exception ex)
@@ -308,7 +325,27 @@ namespace EntityFrameworkProject.FORMS
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       
+
+        
+
+        private void panelGrab_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(Handle, 0x112, 0xf012, 0);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (op == 1)
+            {
+            practicaCtx.EdificiosReligiosos.Remove(edificiosReligiosos);
+            practicaCtx.SaveChanges();
+            }
+            this.Close();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.gif;*.bmp|Todos los archivos|*.*";
             openFileDialog1.Title = "Seleccionar imagen";
@@ -319,10 +356,54 @@ namespace EntityFrameworkProject.FORMS
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 // Obtener la ruta del archivo seleccionado
-                
+                ListaBase64.Clear();
                 ListaBase64.Add(ImageToBase642(openFileDialog1.FileName));
-            }
 
+                //dgv.DataSource = ListaBase64.ToList();
+                insertarGaleria();
+                updateDataGridGaleria();
+            }
+        }
+
+        private void updateDataGridGaleria()
+        {
+            var queryGaleria = from g in practicaCtx.Galeria
+                               orderby g.id_galeria
+                               where (int)g.id_edificio == (int)edificiosReligiosos.id_edificio
+                               select new
+                               {
+                                   ID = g.id_galeria,
+                               };
+            dgv.DataSource = null;
+            dgv.DataSource = queryGaleria.ToList();
+        }
+
+        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            Galeria foto;
+
+            foto = practicaCtx.Galeria.Find(dgv.SelectedCells[0].Value);
+
+
+            pbImagenGaleria.Image = Base64ToImage(foto.imagen_base64);
+
+            panelGaleriaPreview.Visible = true;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            panelGaleriaPreview.Visible = false;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Galeria foto;
+            foto = practicaCtx.Galeria.Find(dgv.SelectedCells[0].Value);
+            practicaCtx.Galeria.Remove(foto);
+            practicaCtx.SaveChanges();
+            updateDataGridGaleria();
+            panelGaleriaPreview.Visible =false;
         }
     }
 }

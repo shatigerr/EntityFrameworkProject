@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -167,6 +168,7 @@ namespace EntityFrameworkProject.FORMS
 
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            panelDetails.Visible = true;
             edificiosReligiosos = new EdificiosReligiosos();
             edificiosReligiosos = practicaCtx.EdificiosReligiosos.Find(dgv.SelectedCells[0].Value);
 
@@ -174,7 +176,7 @@ namespace EntityFrameworkProject.FORMS
             pbPortada.SizeMode = PictureBoxSizeMode.Zoom;
             lbNombre.Text = edificiosReligiosos.nombre;
             lbResenya.Text = edificiosReligiosos.ressenya != null ? edificiosReligiosos.ressenya : "";
-            lbFecha.Text = edificiosReligiosos.fecha_construccion.ToString();
+            lbFecha.Text = edificiosReligiosos.fecha_construccion.Value.ToShortDateString();
             lbPais.Text = edificiosReligiosos.Paises.nombre_pais;
             lbUbicacion.Text = edificiosReligiosos.ubicacion;
             lbCapacidad.Text = $"{edificiosReligiosos.capacidad} Personas";
@@ -190,7 +192,7 @@ namespace EntityFrameworkProject.FORMS
             pbPreview.Image = list.Count > 0 ? Base64ToImage(list[0].image.ToString()) : Properties.Resources.placeholder;
             pbPreview.SizeMode = PictureBoxSizeMode.Zoom;
             galeria = consultarGaleria(edificiosReligiosos.id_edificio);
-            if(galeria.Count >0)
+            if (galeria.Count >0)
             {
                 if (galeria.Count == 1)
                 {
@@ -200,7 +202,7 @@ namespace EntityFrameworkProject.FORMS
                 else
                 {
                     button2.Enabled = true;
-
+                    elements = 0;
                 }
                 pbGaleria.Image = Base64ToImage(galeria[0]);
 
@@ -300,6 +302,26 @@ namespace EntityFrameworkProject.FORMS
         private void btnWeb_MouseLeave(object sender, EventArgs e)
         {
             pbPreview.Visible = false;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            
+        }
+
+
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr one, int two, int three, int four);
+
+
+        private void panelGrab_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(Handle, 0x112, 0xf012, 0);
         }
     }
 }

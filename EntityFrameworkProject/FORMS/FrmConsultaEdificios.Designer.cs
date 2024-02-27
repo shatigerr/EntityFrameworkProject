@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultaEdificios));
             this.dgv = new System.Windows.Forms.DataGridView();
             this.cbContinente = new System.Windows.Forms.ComboBox();
             this.cbPais = new System.Windows.Forms.ComboBox();
@@ -45,16 +46,25 @@
             this.btnWikipedia = new System.Windows.Forms.Button();
             this.lbUbicacion = new System.Windows.Forms.Label();
             this.lbCapacidad = new System.Windows.Forms.Label();
-            this.pbGaleria = new System.Windows.Forms.PictureBox();
-            this.pbPortada = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.lbPais = new System.Windows.Forms.Label();
+            this.panelDetails = new System.Windows.Forms.Panel();
+            this.pbPortada = new System.Windows.Forms.PictureBox();
             this.pbPreview = new System.Windows.Forms.PictureBox();
+            this.pbGaleria = new System.Windows.Forms.PictureBox();
+            this.lbSelectInfo = new System.Windows.Forms.Label();
+            this.panelGrab = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbGaleria)).BeginInit();
+            this.panelDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPortada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGaleria)).BeginInit();
+            this.panelGrab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv
@@ -62,40 +72,41 @@
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgv.Location = new System.Drawing.Point(12, 12);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv.Location = new System.Drawing.Point(12, 46);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowHeadersWidth = 51;
+            this.dgv.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.ShowEditingIcon = false;
             this.dgv.Size = new System.Drawing.Size(635, 563);
             this.dgv.TabIndex = 13;
-            this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
+            this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             // 
             // cbContinente
             // 
             this.cbContinente.Enabled = false;
             this.cbContinente.FormattingEnabled = true;
-            this.cbContinente.Location = new System.Drawing.Point(97, 600);
+            this.cbContinente.Location = new System.Drawing.Point(97, 634);
             this.cbContinente.Name = "cbContinente";
             this.cbContinente.Size = new System.Drawing.Size(121, 24);
             this.cbContinente.TabIndex = 14;
@@ -105,7 +116,7 @@
             // 
             this.cbPais.Enabled = false;
             this.cbPais.FormattingEnabled = true;
-            this.cbPais.Location = new System.Drawing.Point(274, 600);
+            this.cbPais.Location = new System.Drawing.Point(274, 634);
             this.cbPais.Name = "cbPais";
             this.cbPais.Size = new System.Drawing.Size(121, 24);
             this.cbPais.TabIndex = 15;
@@ -115,7 +126,7 @@
             // 
             this.lbCont.AutoSize = true;
             this.lbCont.ForeColor = System.Drawing.Color.White;
-            this.lbCont.Location = new System.Drawing.Point(14, 603);
+            this.lbCont.Location = new System.Drawing.Point(14, 637);
             this.lbCont.Name = "lbCont";
             this.lbCont.Size = new System.Drawing.Size(77, 16);
             this.lbCont.TabIndex = 16;
@@ -125,7 +136,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(234, 603);
+            this.label1.Location = new System.Drawing.Point(234, 637);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 16);
             this.label1.TabIndex = 17;
@@ -137,7 +148,7 @@
             this.cbFiltres.Checked = true;
             this.cbFiltres.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbFiltres.ForeColor = System.Drawing.Color.White;
-            this.cbFiltres.Location = new System.Drawing.Point(430, 640);
+            this.cbFiltres.Location = new System.Drawing.Point(430, 674);
             this.cbFiltres.Name = "cbFiltres";
             this.cbFiltres.Size = new System.Drawing.Size(111, 20);
             this.cbFiltres.TabIndex = 18;
@@ -152,7 +163,7 @@
             this.cbEnablePais.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbEnablePais.Enabled = false;
             this.cbEnablePais.ForeColor = System.Drawing.Color.White;
-            this.cbEnablePais.Location = new System.Drawing.Point(430, 603);
+            this.cbEnablePais.Location = new System.Drawing.Point(430, 637);
             this.cbEnablePais.Name = "cbEnablePais";
             this.cbEnablePais.Size = new System.Drawing.Size(114, 20);
             this.cbEnablePais.TabIndex = 19;
@@ -165,7 +176,7 @@
             this.lbNombre.AutoSize = true;
             this.lbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNombre.ForeColor = System.Drawing.Color.White;
-            this.lbNombre.Location = new System.Drawing.Point(812, 12);
+            this.lbNombre.Location = new System.Drawing.Point(140, 3);
             this.lbNombre.Name = "lbNombre";
             this.lbNombre.Size = new System.Drawing.Size(101, 29);
             this.lbNombre.TabIndex = 20;
@@ -176,7 +187,7 @@
             this.lbResenya.AutoSize = true;
             this.lbResenya.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbResenya.ForeColor = System.Drawing.Color.White;
-            this.lbResenya.Location = new System.Drawing.Point(659, 151);
+            this.lbResenya.Location = new System.Drawing.Point(8, 140);
             this.lbResenya.MaximumSize = new System.Drawing.Size(300, 200);
             this.lbResenya.Name = "lbResenya";
             this.lbResenya.Size = new System.Drawing.Size(66, 20);
@@ -188,7 +199,7 @@
             this.lbFecha.AutoSize = true;
             this.lbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbFecha.ForeColor = System.Drawing.Color.White;
-            this.lbFecha.Location = new System.Drawing.Point(985, 22);
+            this.lbFecha.Location = new System.Drawing.Point(141, 47);
             this.lbFecha.Name = "lbFecha";
             this.lbFecha.Size = new System.Drawing.Size(55, 20);
             this.lbFecha.TabIndex = 22;
@@ -197,7 +208,7 @@
             // btnMaps
             // 
             this.btnMaps.ForeColor = System.Drawing.Color.Black;
-            this.btnMaps.Location = new System.Drawing.Point(672, 619);
+            this.btnMaps.Location = new System.Drawing.Point(12, 609);
             this.btnMaps.Name = "btnMaps";
             this.btnMaps.Size = new System.Drawing.Size(116, 23);
             this.btnMaps.TabIndex = 23;
@@ -208,7 +219,7 @@
             // btnWeb
             // 
             this.btnWeb.ForeColor = System.Drawing.Color.Black;
-            this.btnWeb.Location = new System.Drawing.Point(829, 619);
+            this.btnWeb.Location = new System.Drawing.Point(169, 609);
             this.btnWeb.Name = "btnWeb";
             this.btnWeb.Size = new System.Drawing.Size(117, 23);
             this.btnWeb.TabIndex = 24;
@@ -220,7 +231,7 @@
             // btnWikipedia
             // 
             this.btnWikipedia.ForeColor = System.Drawing.Color.Black;
-            this.btnWikipedia.Location = new System.Drawing.Point(977, 619);
+            this.btnWikipedia.Location = new System.Drawing.Point(317, 609);
             this.btnWikipedia.Name = "btnWikipedia";
             this.btnWikipedia.Size = new System.Drawing.Size(117, 23);
             this.btnWikipedia.TabIndex = 25;
@@ -229,12 +240,11 @@
             // 
             // lbUbicacion
             // 
-            this.lbUbicacion.AutoSize = true;
             this.lbUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUbicacion.ForeColor = System.Drawing.Color.White;
-            this.lbUbicacion.Location = new System.Drawing.Point(982, 110);
+            this.lbUbicacion.Location = new System.Drawing.Point(291, 88);
             this.lbUbicacion.Name = "lbUbicacion";
-            this.lbUbicacion.Size = new System.Drawing.Size(83, 20);
+            this.lbUbicacion.Size = new System.Drawing.Size(143, 51);
             this.lbUbicacion.TabIndex = 26;
             this.lbUbicacion.Text = "Ubicacion";
             // 
@@ -243,33 +253,17 @@
             this.lbCapacidad.AutoSize = true;
             this.lbCapacidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCapacidad.ForeColor = System.Drawing.Color.White;
-            this.lbCapacidad.Location = new System.Drawing.Point(813, 54);
+            this.lbCapacidad.Location = new System.Drawing.Point(141, 88);
             this.lbCapacidad.Name = "lbCapacidad";
             this.lbCapacidad.Size = new System.Drawing.Size(88, 20);
             this.lbCapacidad.TabIndex = 27;
             this.lbCapacidad.Text = "Capacidad";
             // 
-            // pbGaleria
-            // 
-            this.pbGaleria.Location = new System.Drawing.Point(672, 244);
-            this.pbGaleria.Name = "pbGaleria";
-            this.pbGaleria.Size = new System.Drawing.Size(422, 302);
-            this.pbGaleria.TabIndex = 28;
-            this.pbGaleria.TabStop = false;
-            // 
-            // pbPortada
-            // 
-            this.pbPortada.Location = new System.Drawing.Point(663, 13);
-            this.pbPortada.Name = "pbPortada";
-            this.pbPortada.Size = new System.Drawing.Size(132, 117);
-            this.pbPortada.TabIndex = 29;
-            this.pbPortada.TabStop = false;
-            // 
             // button1
             // 
             this.button1.Enabled = false;
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(672, 577);
+            this.button1.Location = new System.Drawing.Point(12, 567);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(188, 23);
             this.button1.TabIndex = 30;
@@ -281,7 +275,7 @@
             // 
             this.button2.Enabled = false;
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(906, 577);
+            this.button2.Location = new System.Drawing.Point(246, 567);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(188, 23);
             this.button2.TabIndex = 31;
@@ -294,41 +288,116 @@
             this.lbPais.AutoSize = true;
             this.lbPais.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPais.ForeColor = System.Drawing.Color.White;
-            this.lbPais.Location = new System.Drawing.Point(982, 65);
+            this.lbPais.Location = new System.Drawing.Point(291, 47);
             this.lbPais.Name = "lbPais";
             this.lbPais.Size = new System.Drawing.Size(42, 20);
             this.lbPais.TabIndex = 32;
             this.lbPais.Text = "Pais";
             // 
+            // panelDetails
+            // 
+            this.panelDetails.Controls.Add(this.pbPortada);
+            this.panelDetails.Controls.Add(this.btnWikipedia);
+            this.panelDetails.Controls.Add(this.pbPreview);
+            this.panelDetails.Controls.Add(this.lbCapacidad);
+            this.panelDetails.Controls.Add(this.lbNombre);
+            this.panelDetails.Controls.Add(this.pbGaleria);
+            this.panelDetails.Controls.Add(this.lbUbicacion);
+            this.panelDetails.Controls.Add(this.lbPais);
+            this.panelDetails.Controls.Add(this.btnWeb);
+            this.panelDetails.Controls.Add(this.btnMaps);
+            this.panelDetails.Controls.Add(this.lbResenya);
+            this.panelDetails.Controls.Add(this.button1);
+            this.panelDetails.Controls.Add(this.lbFecha);
+            this.panelDetails.Controls.Add(this.button2);
+            this.panelDetails.Location = new System.Drawing.Point(653, 46);
+            this.panelDetails.Name = "panelDetails";
+            this.panelDetails.Size = new System.Drawing.Size(456, 648);
+            this.panelDetails.TabIndex = 34;
+            this.panelDetails.Visible = false;
+            // 
+            // pbPortada
+            // 
+            this.pbPortada.BackColor = System.Drawing.Color.Transparent;
+            this.pbPortada.Location = new System.Drawing.Point(3, 3);
+            this.pbPortada.Name = "pbPortada";
+            this.pbPortada.Size = new System.Drawing.Size(132, 117);
+            this.pbPortada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPortada.TabIndex = 29;
+            this.pbPortada.TabStop = false;
+            // 
             // pbPreview
             // 
-            this.pbPreview.Location = new System.Drawing.Point(799, 428);
+            this.pbPreview.BackColor = System.Drawing.Color.Transparent;
+            this.pbPreview.Location = new System.Drawing.Point(127, 427);
             this.pbPreview.Name = "pbPreview";
             this.pbPreview.Size = new System.Drawing.Size(197, 172);
             this.pbPreview.TabIndex = 33;
             this.pbPreview.TabStop = false;
             this.pbPreview.Visible = false;
             // 
+            // pbGaleria
+            // 
+            this.pbGaleria.BackColor = System.Drawing.Color.Transparent;
+            this.pbGaleria.Location = new System.Drawing.Point(12, 234);
+            this.pbGaleria.Name = "pbGaleria";
+            this.pbGaleria.Size = new System.Drawing.Size(422, 302);
+            this.pbGaleria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbGaleria.TabIndex = 28;
+            this.pbGaleria.TabStop = false;
+            // 
+            // lbSelectInfo
+            // 
+            this.lbSelectInfo.AutoSize = true;
+            this.lbSelectInfo.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSelectInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lbSelectInfo.Location = new System.Drawing.Point(691, 283);
+            this.lbSelectInfo.Name = "lbSelectInfo";
+            this.lbSelectInfo.Size = new System.Drawing.Size(359, 34);
+            this.lbSelectInfo.TabIndex = 35;
+            this.lbSelectInfo.Text = "Selecciona un edificio";
+            // 
+            // panelGrab
+            // 
+            this.panelGrab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
+            this.panelGrab.Controls.Add(this.pictureBox2);
+            this.panelGrab.Controls.Add(this.pictureBox1);
+            this.panelGrab.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelGrab.Location = new System.Drawing.Point(0, 0);
+            this.panelGrab.Name = "panelGrab";
+            this.panelGrab.Size = new System.Drawing.Size(1120, 30);
+            this.panelGrab.TabIndex = 36;
+            this.panelGrab.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelGrab_MouseDown);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::EntityFrameworkProject.Properties.Resources.close;
+            this.pictureBox2.Location = new System.Drawing.Point(1060, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(57, 25);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EntityFrameworkProject.Properties.Resources.close;
+            this.pictureBox1.Location = new System.Drawing.Point(1146, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(57, 25);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmConsultaEdificios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
-            this.ClientSize = new System.Drawing.Size(1178, 675);
-            this.Controls.Add(this.pbPreview);
-            this.Controls.Add(this.lbPais);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.pbPortada);
-            this.Controls.Add(this.pbGaleria);
-            this.Controls.Add(this.lbCapacidad);
-            this.Controls.Add(this.lbUbicacion);
-            this.Controls.Add(this.btnWikipedia);
-            this.Controls.Add(this.btnWeb);
-            this.Controls.Add(this.btnMaps);
-            this.Controls.Add(this.lbFecha);
-            this.Controls.Add(this.lbResenya);
-            this.Controls.Add(this.lbNombre);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(68)))), ((int)(((byte)(74)))));
+            this.ClientSize = new System.Drawing.Size(1120, 705);
+            this.Controls.Add(this.panelGrab);
+            this.Controls.Add(this.panelDetails);
             this.Controls.Add(this.cbEnablePais);
             this.Controls.Add(this.cbFiltres);
             this.Controls.Add(this.label1);
@@ -336,14 +405,23 @@
             this.Controls.Add(this.cbPais);
             this.Controls.Add(this.cbContinente);
             this.Controls.Add(this.dgv);
-            this.ForeColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lbSelectInfo);
+            this.ForeColor = System.Drawing.Color.Black;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmConsultaEdificios";
-            this.Text = "FrmConsultaEdificios";
             this.Load += new System.EventHandler(this.FrmConsultaEdificios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbGaleria)).EndInit();
+            this.panelDetails.ResumeLayout(false);
+            this.panelDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPortada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGaleria)).EndInit();
+            this.panelGrab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,5 +450,10 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lbPais;
         private System.Windows.Forms.PictureBox pbPreview;
+        private System.Windows.Forms.Panel panelDetails;
+        private System.Windows.Forms.Label lbSelectInfo;
+        private System.Windows.Forms.Panel panelGrab;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

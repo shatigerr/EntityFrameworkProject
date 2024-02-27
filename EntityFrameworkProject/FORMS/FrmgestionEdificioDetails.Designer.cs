@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmgestionEdificioDetails));
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lbId = new System.Windows.Forms.Label();
             this.tbId = new System.Windows.Forms.TextBox();
@@ -48,12 +51,9 @@
             this.lbWikipedia = new System.Windows.Forms.Label();
             this.tbWeb = new System.Windows.Forms.TextBox();
             this.lbWeb = new System.Windows.Forms.Label();
-            this.pbImagen = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btsubirimagen = new System.Windows.Forms.Button();
             this.btAccept = new System.Windows.Forms.Button();
-            this.btCancel = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.gbUrl = new System.Windows.Forms.GroupBox();
             this.gbLocation = new System.Windows.Forms.GroupBox();
             this.tbY = new System.Windows.Forms.TextBox();
@@ -64,10 +64,26 @@
             this.gbInfo = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbResenya = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
+            this.panelGrab = new System.Windows.Forms.Panel();
+            this.pbClose = new System.Windows.Forms.PictureBox();
+            this.pbImagen = new System.Windows.Forms.PictureBox();
+            this.dgv = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pbImagenGaleria = new System.Windows.Forms.PictureBox();
+            this.panelGaleriaPreview = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.gbUrl.SuspendLayout();
             this.gbLocation.SuspendLayout();
             this.gbInfo.SuspendLayout();
+            this.panelGrab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagenGaleria)).BeginInit();
+            this.panelGaleriaPreview.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -80,7 +96,7 @@
             // lbId
             // 
             this.lbId.AutoSize = true;
-            this.lbId.ForeColor = System.Drawing.Color.Black;
+            this.lbId.ForeColor = System.Drawing.Color.White;
             this.lbId.Location = new System.Drawing.Point(38, 44);
             this.lbId.Name = "lbId";
             this.lbId.Size = new System.Drawing.Size(20, 16);
@@ -89,6 +105,7 @@
             // 
             // tbId
             // 
+            this.tbId.BackColor = System.Drawing.Color.White;
             this.tbId.Enabled = false;
             this.tbId.Location = new System.Drawing.Point(64, 41);
             this.tbId.Name = "tbId";
@@ -97,6 +114,7 @@
             // 
             // tbNombre
             // 
+            this.tbNombre.BackColor = System.Drawing.Color.White;
             this.tbNombre.Location = new System.Drawing.Point(241, 41);
             this.tbNombre.Name = "tbNombre";
             this.tbNombre.Size = new System.Drawing.Size(203, 22);
@@ -105,7 +123,7 @@
             // lbNombre
             // 
             this.lbNombre.AutoSize = true;
-            this.lbNombre.ForeColor = System.Drawing.Color.Black;
+            this.lbNombre.ForeColor = System.Drawing.Color.White;
             this.lbNombre.Location = new System.Drawing.Point(179, 44);
             this.lbNombre.Name = "lbNombre";
             this.lbNombre.Size = new System.Drawing.Size(56, 16);
@@ -114,6 +132,7 @@
             // 
             // tbUbicacion
             // 
+            this.tbUbicacion.BackColor = System.Drawing.Color.White;
             this.tbUbicacion.Location = new System.Drawing.Point(81, 61);
             this.tbUbicacion.Name = "tbUbicacion";
             this.tbUbicacion.Size = new System.Drawing.Size(308, 22);
@@ -122,7 +141,7 @@
             // lbUbicacion
             // 
             this.lbUbicacion.AutoSize = true;
-            this.lbUbicacion.ForeColor = System.Drawing.Color.Black;
+            this.lbUbicacion.ForeColor = System.Drawing.Color.White;
             this.lbUbicacion.Location = new System.Drawing.Point(7, 64);
             this.lbUbicacion.Name = "lbUbicacion";
             this.lbUbicacion.Size = new System.Drawing.Size(64, 16);
@@ -131,6 +150,7 @@
             // 
             // tbCapacidad
             // 
+            this.tbCapacidad.BackColor = System.Drawing.Color.White;
             this.tbCapacidad.Location = new System.Drawing.Point(89, 24);
             this.tbCapacidad.Name = "tbCapacidad";
             this.tbCapacidad.Size = new System.Drawing.Size(100, 22);
@@ -139,7 +159,7 @@
             // lbCapacidad
             // 
             this.lbCapacidad.AutoSize = true;
-            this.lbCapacidad.ForeColor = System.Drawing.Color.Black;
+            this.lbCapacidad.ForeColor = System.Drawing.Color.White;
             this.lbCapacidad.Location = new System.Drawing.Point(9, 27);
             this.lbCapacidad.Name = "lbCapacidad";
             this.lbCapacidad.Size = new System.Drawing.Size(74, 16);
@@ -149,7 +169,7 @@
             // lbfecha
             // 
             this.lbfecha.AutoSize = true;
-            this.lbfecha.ForeColor = System.Drawing.Color.Black;
+            this.lbfecha.ForeColor = System.Drawing.Color.White;
             this.lbfecha.Location = new System.Drawing.Point(9, 75);
             this.lbfecha.Name = "lbfecha";
             this.lbfecha.Size = new System.Drawing.Size(123, 16);
@@ -158,6 +178,7 @@
             // 
             // tbreligion
             // 
+            this.tbreligion.BackColor = System.Drawing.Color.White;
             this.tbreligion.Location = new System.Drawing.Point(293, 24);
             this.tbreligion.Name = "tbreligion";
             this.tbreligion.Size = new System.Drawing.Size(100, 22);
@@ -166,7 +187,7 @@
             // lbreligion
             // 
             this.lbreligion.AutoSize = true;
-            this.lbreligion.ForeColor = System.Drawing.Color.Black;
+            this.lbreligion.ForeColor = System.Drawing.Color.White;
             this.lbreligion.Location = new System.Drawing.Point(230, 27);
             this.lbreligion.Name = "lbreligion";
             this.lbreligion.Size = new System.Drawing.Size(57, 16);
@@ -176,7 +197,7 @@
             // lbContinente
             // 
             this.lbContinente.AutoSize = true;
-            this.lbContinente.ForeColor = System.Drawing.Color.Black;
+            this.lbContinente.ForeColor = System.Drawing.Color.White;
             this.lbContinente.Location = new System.Drawing.Point(6, 29);
             this.lbContinente.Name = "lbContinente";
             this.lbContinente.Size = new System.Drawing.Size(70, 16);
@@ -185,6 +206,7 @@
             // 
             // cbContinente
             // 
+            this.cbContinente.BackColor = System.Drawing.Color.White;
             this.cbContinente.FormattingEnabled = true;
             this.cbContinente.Location = new System.Drawing.Point(82, 26);
             this.cbContinente.Name = "cbContinente";
@@ -206,7 +228,7 @@
             // lbPais
             // 
             this.lbPais.AutoSize = true;
-            this.lbPais.ForeColor = System.Drawing.Color.Black;
+            this.lbPais.ForeColor = System.Drawing.Color.White;
             this.lbPais.Location = new System.Drawing.Point(227, 29);
             this.lbPais.Name = "lbPais";
             this.lbPais.Size = new System.Drawing.Size(34, 16);
@@ -215,6 +237,7 @@
             // 
             // tbWikipedia
             // 
+            this.tbWikipedia.BackColor = System.Drawing.Color.White;
             this.tbWikipedia.Location = new System.Drawing.Point(80, 26);
             this.tbWikipedia.Name = "tbWikipedia";
             this.tbWikipedia.Size = new System.Drawing.Size(100, 22);
@@ -223,7 +246,7 @@
             // lbWikipedia
             // 
             this.lbWikipedia.AutoSize = true;
-            this.lbWikipedia.ForeColor = System.Drawing.Color.Black;
+            this.lbWikipedia.ForeColor = System.Drawing.Color.White;
             this.lbWikipedia.Location = new System.Drawing.Point(6, 29);
             this.lbWikipedia.Name = "lbWikipedia";
             this.lbWikipedia.Size = new System.Drawing.Size(68, 16);
@@ -232,6 +255,7 @@
             // 
             // tbWeb
             // 
+            this.tbWeb.BackColor = System.Drawing.Color.White;
             this.tbWeb.Location = new System.Drawing.Point(237, 26);
             this.tbWeb.Name = "tbWeb";
             this.tbWeb.Size = new System.Drawing.Size(100, 22);
@@ -240,20 +264,12 @@
             // lbWeb
             // 
             this.lbWeb.AutoSize = true;
-            this.lbWeb.ForeColor = System.Drawing.Color.Black;
+            this.lbWeb.ForeColor = System.Drawing.Color.White;
             this.lbWeb.Location = new System.Drawing.Point(195, 29);
             this.lbWeb.Name = "lbWeb";
             this.lbWeb.Size = new System.Drawing.Size(36, 16);
             this.lbWeb.TabIndex = 20;
             this.lbWeb.Text = "Web";
-            // 
-            // pbImagen
-            // 
-            this.pbImagen.Location = new System.Drawing.Point(551, 30);
-            this.pbImagen.Name = "pbImagen";
-            this.pbImagen.Size = new System.Drawing.Size(214, 199);
-            this.pbImagen.TabIndex = 22;
-            this.pbImagen.TabStop = false;
             // 
             // openFileDialog1
             // 
@@ -262,7 +278,7 @@
             // btsubirimagen
             // 
             this.btsubirimagen.ForeColor = System.Drawing.Color.Black;
-            this.btsubirimagen.Location = new System.Drawing.Point(551, 250);
+            this.btsubirimagen.Location = new System.Drawing.Point(513, 257);
             this.btsubirimagen.Name = "btsubirimagen";
             this.btsubirimagen.Size = new System.Drawing.Size(218, 25);
             this.btsubirimagen.TabIndex = 23;
@@ -275,33 +291,11 @@
             this.btAccept.ForeColor = System.Drawing.Color.Black;
             this.btAccept.Location = new System.Drawing.Point(41, 592);
             this.btAccept.Name = "btAccept";
-            this.btAccept.Size = new System.Drawing.Size(106, 37);
+            this.btAccept.Size = new System.Drawing.Size(403, 37);
             this.btAccept.TabIndex = 24;
             this.btAccept.Text = "Accept";
             this.btAccept.UseVisualStyleBackColor = true;
             this.btAccept.Click += new System.EventHandler(this.btAccept_Click);
-            // 
-            // btCancel
-            // 
-            this.btCancel.ForeColor = System.Drawing.Color.Black;
-            this.btCancel.Location = new System.Drawing.Point(163, 593);
-            this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(106, 36);
-            this.btCancel.TabIndex = 25;
-            this.btCancel.Text = "Cancel";
-            this.btCancel.UseVisualStyleBackColor = true;
-            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
-            // 
-            // button1
-            // 
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(551, 281);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(218, 25);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Subir imagenes";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // gbUrl
             // 
@@ -309,6 +303,7 @@
             this.gbUrl.Controls.Add(this.tbWikipedia);
             this.gbUrl.Controls.Add(this.lbWeb);
             this.gbUrl.Controls.Add(this.tbWeb);
+            this.gbUrl.ForeColor = System.Drawing.Color.White;
             this.gbUrl.Location = new System.Drawing.Point(41, 494);
             this.gbUrl.Name = "gbUrl";
             this.gbUrl.Size = new System.Drawing.Size(403, 70);
@@ -329,6 +324,7 @@
             this.gbLocation.Controls.Add(this.cbContinente);
             this.gbLocation.Controls.Add(this.lbPais);
             this.gbLocation.Controls.Add(this.cbPais);
+            this.gbLocation.ForeColor = System.Drawing.Color.White;
             this.gbLocation.Location = new System.Drawing.Point(41, 312);
             this.gbLocation.Name = "gbLocation";
             this.gbLocation.Size = new System.Drawing.Size(403, 176);
@@ -338,6 +334,7 @@
             // 
             // tbY
             // 
+            this.tbY.BackColor = System.Drawing.Color.White;
             this.tbY.Location = new System.Drawing.Point(233, 131);
             this.tbY.Name = "tbY";
             this.tbY.Size = new System.Drawing.Size(142, 22);
@@ -346,7 +343,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(213, 134);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(16, 16);
@@ -355,6 +352,7 @@
             // 
             // tbX
             // 
+            this.tbX.BackColor = System.Drawing.Color.White;
             this.tbX.Location = new System.Drawing.Point(59, 131);
             this.tbX.Name = "tbX";
             this.tbX.Size = new System.Drawing.Size(142, 22);
@@ -363,7 +361,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(39, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(15, 16);
@@ -373,7 +371,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(9, 99);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 16);
@@ -390,6 +388,7 @@
             this.gbInfo.Controls.Add(this.lbfecha);
             this.gbInfo.Controls.Add(this.lbreligion);
             this.gbInfo.Controls.Add(this.tbreligion);
+            this.gbInfo.ForeColor = System.Drawing.Color.White;
             this.gbInfo.Location = new System.Drawing.Point(41, 97);
             this.gbInfo.Name = "gbInfo";
             this.gbInfo.Size = new System.Drawing.Size(403, 209);
@@ -400,7 +399,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(9, 106);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 16);
@@ -409,6 +408,7 @@
             // 
             // tbResenya
             // 
+            this.tbResenya.BackColor = System.Drawing.Color.White;
             this.tbResenya.Location = new System.Drawing.Point(138, 103);
             this.tbResenya.Multiline = true;
             this.tbResenya.Name = "tbResenya";
@@ -416,16 +416,137 @@
             this.tbResenya.Size = new System.Drawing.Size(254, 93);
             this.tbResenya.TabIndex = 12;
             // 
+            // panelGrab
+            // 
+            this.panelGrab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
+            this.panelGrab.Controls.Add(this.pbClose);
+            this.panelGrab.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelGrab.Location = new System.Drawing.Point(0, 0);
+            this.panelGrab.Name = "panelGrab";
+            this.panelGrab.Size = new System.Drawing.Size(784, 30);
+            this.panelGrab.TabIndex = 30;
+            this.panelGrab.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelGrab_MouseDown);
+            // 
+            // pbClose
+            // 
+            this.pbClose.Image = global::EntityFrameworkProject.Properties.Resources.close;
+            this.pbClose.Location = new System.Drawing.Point(727, 0);
+            this.pbClose.Name = "pbClose";
+            this.pbClose.Size = new System.Drawing.Size(57, 25);
+            this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbClose.TabIndex = 1;
+            this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pbImagen
+            // 
+            this.pbImagen.Location = new System.Drawing.Point(513, 44);
+            this.pbImagen.Name = "pbImagen";
+            this.pbImagen.Size = new System.Drawing.Size(214, 199);
+            this.pbImagen.TabIndex = 22;
+            this.pbImagen.TabStop = false;
+            // 
+            // dgv
+            // 
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv.Location = new System.Drawing.Point(460, 326);
+            this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
+            this.dgv.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgv.RowHeadersVisible = false;
+            this.dgv.RowHeadersWidth = 51;
+            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv.ShowEditingIcon = false;
+            this.dgv.Size = new System.Drawing.Size(312, 303);
+            this.dgv.TabIndex = 35;
+            this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
+            // 
+            // button1
+            // 
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(513, 288);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(218, 25);
+            this.button1.TabIndex = 34;
+            this.button1.Text = "Subir imagenes";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // pbImagenGaleria
+            // 
+            this.pbImagenGaleria.Location = new System.Drawing.Point(0, 0);
+            this.pbImagenGaleria.Name = "pbImagenGaleria";
+            this.pbImagenGaleria.Size = new System.Drawing.Size(312, 303);
+            this.pbImagenGaleria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbImagenGaleria.TabIndex = 36;
+            this.pbImagenGaleria.TabStop = false;
+            // 
+            // panelGaleriaPreview
+            // 
+            this.panelGaleriaPreview.Controls.Add(this.pictureBox3);
+            this.panelGaleriaPreview.Controls.Add(this.pictureBox2);
+            this.panelGaleriaPreview.Controls.Add(this.pbImagenGaleria);
+            this.panelGaleriaPreview.Location = new System.Drawing.Point(460, 326);
+            this.panelGaleriaPreview.Name = "panelGaleriaPreview";
+            this.panelGaleriaPreview.Size = new System.Drawing.Size(312, 303);
+            this.panelGaleriaPreview.TabIndex = 37;
+            this.panelGaleriaPreview.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox2.Image = global::EntityFrameworkProject.Properties.Resources.trash;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 37;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox3.Image = global::EntityFrameworkProject.Properties.Resources.close;
+            this.pictureBox3.Location = new System.Drawing.Point(279, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 38;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
             // FrmgestionEdificioDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(68)))), ((int)(((byte)(74)))));
             this.ClientSize = new System.Drawing.Size(784, 641);
+            this.Controls.Add(this.panelGaleriaPreview);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.panelGrab);
             this.Controls.Add(this.gbInfo);
             this.Controls.Add(this.gbLocation);
             this.Controls.Add(this.gbUrl);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btAccept);
             this.Controls.Add(this.btsubirimagen);
             this.Controls.Add(this.pbImagen);
@@ -433,16 +554,28 @@
             this.Controls.Add(this.lbNombre);
             this.Controls.Add(this.tbId);
             this.Controls.Add(this.lbId);
+            this.Controls.Add(this.dgv);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmgestionEdificioDetails";
             this.Text = "gestionEdificioDetails";
             this.Load += new System.EventHandler(this.FrmgestionEdificioDetails_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
             this.gbUrl.ResumeLayout(false);
             this.gbUrl.PerformLayout();
             this.gbLocation.ResumeLayout(false);
             this.gbLocation.PerformLayout();
             this.gbInfo.ResumeLayout(false);
             this.gbInfo.PerformLayout();
+            this.panelGrab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagenGaleria)).EndInit();
+            this.panelGaleriaPreview.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -474,8 +607,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btsubirimagen;
         private System.Windows.Forms.Button btAccept;
-        private System.Windows.Forms.Button btCancel;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox gbUrl;
         private System.Windows.Forms.GroupBox gbLocation;
         private System.Windows.Forms.GroupBox gbInfo;
@@ -486,5 +617,13 @@
         private System.Windows.Forms.TextBox tbX;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panelGrab;
+        private System.Windows.Forms.PictureBox pbClose;
+        private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pbImagenGaleria;
+        private System.Windows.Forms.Panel panelGaleriaPreview;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

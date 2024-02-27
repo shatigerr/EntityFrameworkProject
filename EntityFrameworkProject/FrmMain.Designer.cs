@@ -40,6 +40,7 @@
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.edificiosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.time = new System.Windows.Forms.Timer(this.components);
+            this.fadeTimer = new System.Windows.Forms.Timer(this.components);
             this.menuMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -155,6 +156,11 @@
             this.time.Enabled = true;
             this.time.Tick += new System.EventHandler(this.time_Tick);
             // 
+            // fadeTimer
+            // 
+            this.fadeTimer.Interval = 5;
+            this.fadeTimer.Tick += new System.EventHandler(this.fade_Tick);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -191,6 +197,7 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Timer time;
+        private System.Windows.Forms.Timer fadeTimer;
     }
 }
 

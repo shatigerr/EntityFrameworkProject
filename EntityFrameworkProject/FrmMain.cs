@@ -29,7 +29,7 @@ namespace EntityFrameworkProject
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            fadeTimer.Start();
         }
 
 
@@ -68,6 +68,19 @@ namespace EntityFrameworkProject
         private void FrmMain_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void fade_Tick(object sender, EventArgs e)
+        {
+            if(this.Opacity > 0)
+            {
+                this.Opacity -= 0.025;
+            }
+            else
+            {
+                fadeTimer.Stop();
+                this.Close();
+            }
         }
     }
 }
