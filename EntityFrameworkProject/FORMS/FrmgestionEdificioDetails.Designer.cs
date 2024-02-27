@@ -71,8 +71,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pbImagenGaleria = new System.Windows.Forms.PictureBox();
             this.panelGaleriaPreview = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.gbUrl.SuspendLayout();
             this.gbLocation.SuspendLayout();
             this.gbInfo.SuspendLayout();
@@ -82,8 +82,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenGaleria)).BeginInit();
             this.panelGaleriaPreview.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -511,18 +511,6 @@
             this.panelGaleriaPreview.TabIndex = 37;
             this.panelGaleriaPreview.Visible = false;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox2.Image = global::EntityFrameworkProject.Properties.Resources.trash;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 37;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Gray;
@@ -534,6 +522,18 @@
             this.pictureBox3.TabIndex = 38;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox2.Image = global::EntityFrameworkProject.Properties.Resources.trash;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 37;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // FrmgestionEdificioDetails
             // 
@@ -560,6 +560,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmgestionEdificioDetails";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "gestionEdificioDetails";
             this.Load += new System.EventHandler(this.FrmgestionEdificioDetails_Load);
             this.gbUrl.ResumeLayout(false);
@@ -574,8 +575,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenGaleria)).EndInit();
             this.panelGaleriaPreview.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

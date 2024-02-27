@@ -225,6 +225,7 @@
             this.btnWeb.TabIndex = 24;
             this.btnWeb.Text = "Web";
             this.btnWeb.UseVisualStyleBackColor = true;
+            this.btnWeb.Click += new System.EventHandler(this.btnWeb_Click);
             this.btnWeb.MouseLeave += new System.EventHandler(this.btnWeb_MouseLeave);
             this.btnWeb.MouseHover += new System.EventHandler(this.btnWeb_MouseHover);
             // 
@@ -237,6 +238,7 @@
             this.btnWikipedia.TabIndex = 25;
             this.btnWikipedia.Text = "Wikipedia";
             this.btnWikipedia.UseVisualStyleBackColor = true;
+            this.btnWikipedia.Click += new System.EventHandler(this.btnWikipedia_Click);
             // 
             // lbUbicacion
             // 
@@ -412,6 +414,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmConsultaEdificios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmConsultaEdificios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.panelDetails.ResumeLayout(false);

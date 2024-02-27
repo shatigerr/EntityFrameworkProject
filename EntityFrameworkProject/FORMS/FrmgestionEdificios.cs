@@ -88,15 +88,7 @@ namespace EntityFrameworkProject.FORMS
             edificioDetails.Show();
         }
 
-        private IEnumerable<Galeria> consultarGaleriaPerIdEdifici(int id)
-        {
-            return from g in practicaCtx.Galeria
-                        where g.id_edificio == id
-                        select g;
-            
-
-            
-        }
+        
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();

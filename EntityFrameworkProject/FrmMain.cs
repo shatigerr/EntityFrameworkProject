@@ -67,7 +67,7 @@ namespace EntityFrameworkProject
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-
+            //TODO LIMPIAR FOTOS
         }
 
         private void fade_Tick(object sender, EventArgs e)

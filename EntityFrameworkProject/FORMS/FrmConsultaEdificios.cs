@@ -11,6 +11,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+using Image = System.Drawing.Image;
 
 namespace EntityFrameworkProject.FORMS
 {
@@ -29,8 +31,10 @@ namespace EntityFrameworkProject.FORMS
         private void FrmConsultaEdificios_Load(object sender, EventArgs e)
         {
             practicaCtx = new practicaEdifEntities();
+            //ImageB64 b64 = new ImageB64();
             loadDataGrid();
             initCbContinente();
+            
             initCbPais();
 
         }
@@ -170,27 +174,8 @@ namespace EntityFrameworkProject.FORMS
         {
             panelDetails.Visible = true;
             edificiosReligiosos = new EdificiosReligiosos();
-            edificiosReligiosos = practicaCtx.EdificiosReligiosos.Find(dgv.SelectedCells[0].Value);
-
-            pbPortada.Image = edificiosReligiosos.ImagenBase64 != null ? Base64ToImage(edificiosReligiosos.ImagenBase64) : Properties.Resources.placeholder;
-            pbPortada.SizeMode = PictureBoxSizeMode.Zoom;
-            lbNombre.Text = edificiosReligiosos.nombre;
-            lbResenya.Text = edificiosReligiosos.ressenya != null ? edificiosReligiosos.ressenya : "";
-            lbFecha.Text = edificiosReligiosos.fecha_construccion.Value.ToShortDateString();
-            lbPais.Text = edificiosReligiosos.Paises.nombre_pais;
-            lbUbicacion.Text = edificiosReligiosos.ubicacion;
-            lbCapacidad.Text = $"{edificiosReligiosos.capacidad} Personas";
-
-            var queryPreview = from g in practicaCtx.Galeria
-                               where g.id_edificio == edificiosReligiosos.id_edificio && g.Preview == true
-                               select new
-                               {
-                                   image = g.imagen_base64
-                               };
-            var list = queryPreview.ToList();
+            queryToForm();
             
-            pbPreview.Image = list.Count > 0 ? Base64ToImage(list[0].image.ToString()) : Properties.Resources.placeholder;
-            pbPreview.SizeMode = PictureBoxSizeMode.Zoom;
             galeria = consultarGaleria(edificiosReligiosos.id_edificio);
             if (galeria.Count >0)
             {
@@ -204,7 +189,7 @@ namespace EntityFrameworkProject.FORMS
                     button2.Enabled = true;
                     elements = 0;
                 }
-                pbGaleria.Image = Base64ToImage(galeria[0]);
+                pbGaleria.Image = ImageB64.Base64ToImage(galeria[0]);
 
             }
             else
@@ -220,6 +205,38 @@ namespace EntityFrameworkProject.FORMS
 
 
 
+        }
+
+        private void queryToForm()
+        {
+            edificiosReligiosos = practicaCtx.EdificiosReligiosos.Find(dgv.SelectedCells[0].Value);
+
+            pbPortada.Image = edificiosReligiosos.ImagenBase64 != null ? ImageB64.Base64ToImage(edificiosReligiosos.ImagenBase64) : Properties.Resources.placeholder;
+            pbPortada.SizeMode = PictureBoxSizeMode.Zoom;
+            lbNombre.Text = edificiosReligiosos.nombre;
+            lbResenya.Text = edificiosReligiosos.ressenya != null ? edificiosReligiosos.ressenya : "";
+            lbFecha.Text = edificiosReligiosos.fecha_construccion.Value.ToShortDateString();
+            lbPais.Text = edificiosReligiosos.Paises.nombre_pais;
+            lbUbicacion.Text = edificiosReligiosos.ubicacion;
+            lbCapacidad.Text = $"{edificiosReligiosos.capacidad} Personas";
+            loadPreview();
+
+        }
+
+        
+
+        private void loadPreview()
+        {
+            var queryPreview = from g in practicaCtx.Galeria
+                               where g.id_edificio == edificiosReligiosos.id_edificio && g.Preview == true
+                               select new
+                               {
+                                   image = g.imagen_base64
+                               };
+            var list = queryPreview.ToList();
+
+            pbPreview.Image = list.Count > 0 ? ImageB64.Base64ToImage(list[0].image.ToString()) : Properties.Resources.placeholder;
+            pbPreview.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private List<string> consultarGaleria(int id)
@@ -240,19 +257,6 @@ namespace EntityFrameworkProject.FORMS
             return list;
         }
 
-        public static Image Base64ToImage(string base64String)
-        {
-            // Convertir la cadena Base64 a un array de bytes
-            byte[] imageBytes = Convert.FromBase64String(base64String);
-
-            // Crear un flujo de memoria a partir del array de bytes
-            using (MemoryStream ms = new MemoryStream(imageBytes))
-            {
-                // Crear una imagen a partir del flujo de memoria
-                Image image = Image.FromStream(ms);
-                return image;
-            }
-        }
 
         private void btnMaps_Click(object sender, EventArgs e)
         {
@@ -271,7 +275,7 @@ namespace EntityFrameworkProject.FORMS
                 button2.Enabled = true;
                 button1.Enabled = true;
                 elements++;
-                pbGaleria.Image = Base64ToImage(galeria[elements]);
+                pbGaleria.Image = ImageB64.Base64ToImage(galeria[elements]);
                 if (galeria.Count - 1 == elements)
                 {
                     button2.Enabled = false;
@@ -286,7 +290,7 @@ namespace EntityFrameworkProject.FORMS
                 button1.Enabled = true;
                 button2.Enabled = true;
                 elements--;
-                pbGaleria.Image = Base64ToImage(galeria[elements]);
+                pbGaleria.Image = ImageB64.Base64ToImage(galeria[elements]);
                 if (elements == 0)
                 {
                     button1.Enabled = false;
@@ -322,6 +326,16 @@ namespace EntityFrameworkProject.FORMS
         {
             ReleaseCapture();
             SendMessage(Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnWikipedia_Click(object sender, EventArgs e)
+        {
+            Process.Start(edificiosReligiosos.wikipedia_link);
+        }
+
+        private void btnWeb_Click(object sender, EventArgs e)
+        {
+            Process.Start(edificiosReligiosos.web_link);
         }
     }
 }

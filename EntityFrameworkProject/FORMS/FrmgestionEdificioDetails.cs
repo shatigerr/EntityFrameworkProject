@@ -35,7 +35,7 @@ namespace EntityFrameworkProject.FORMS
             this.practicaCtx = practicaCtx;
             this.op = op;   
             InitializeComponent();
-            //Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -43,16 +43,7 @@ namespace EntityFrameworkProject.FORMS
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr one, int two, int three, int four);
 
-        /*[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn
-        (
-            int nLeftRect,     // x-coordinate of upper-left corner
-            int nTopRect,      // y-coordinate of upper-left corner
-            int nRightRect,    // x-coordinate of lower-right corner
-            int nBottomRect,   // y-coordinate of lower-right corner
-            int nWidthEllipse, // height of ellipse
-            int nHeightEllipse // width of ellipse
-        );*/
+        
 
         private void btsubirimagen_Click(object sender, EventArgs e)
         {
@@ -71,53 +62,14 @@ namespace EntityFrameworkProject.FORMS
 
                 
                 //base64String = ImageToBase64(pbImagen.Image, System.Drawing.Imaging.ImageFormat.Jpeg);
-                base64String = ImageToBase642(filePath);
+                base64String = ImageB64.ImageToBase64Path(filePath);
 
 
             }
 
             
         }
-
-        static string ConvertScreenshotToBase64(Screenshot screenshot)
-        {
-            byte[] screenshotAsByteArray = Convert.FromBase64String(screenshot.AsBase64EncodedString);
-            using (MemoryStream stream = new MemoryStream(screenshotAsByteArray))
-            {
-                Image screenshotImage = Image.FromStream(stream);
-                using (MemoryStream base64Stream = new MemoryStream())
-                {
-                    screenshotImage.Save(base64Stream, System.Drawing.Imaging.ImageFormat.Png);
-                    return Convert.ToBase64String(base64Stream.ToArray());
-                }
-            }
-        }
-
-
-        private string ImageToBase642(string imagePath)
-        {
-            // Leer los bytes de la imagen desde el archivo
-            byte[] imageBytes = File.ReadAllBytes(imagePath);
-
-            // Convertir el array de bytes a una cadena Base64
-            string base64String = Convert.ToBase64String(imageBytes);
-
-            return base64String;
-        }
-
-        public static Image Base64ToImage(string base64String)
-            {
-                // Convertir la cadena Base64 a un array de bytes
-                byte[] imageBytes = Convert.FromBase64String(base64String);
-
-                // Crear un flujo de memoria a partir del array de bytes
-                using (MemoryStream ms = new MemoryStream(imageBytes))
-                {
-                    // Crear una imagen a partir del flujo de memoria
-                    Image image = Image.FromStream(ms);
-                    return image;
-                }
-            }
+        
 
         
 
@@ -140,29 +92,11 @@ namespace EntityFrameworkProject.FORMS
             {
                 pbClose.Visible = false;
                 edificiosReligiosos.id_edificio = ed.edificiosReligios.id_edificio;
-                tbId.Text = edificiosReligiosos.id_edificio.ToString();
+                
                 edificiosReligiosos = practicaCtx.EdificiosReligiosos.Find(ed.edificiosReligios.id_edificio);
                 pais = practicaCtx.Paises.Find(edificiosReligiosos.id_pais);
 
-
-                tbId.Text = edificiosReligiosos.id_edificio.ToString();
-                tbNombre.Text = edificiosReligiosos.nombre != null ? edificiosReligiosos.nombre : "";
-                tbCapacidad.Text = edificiosReligiosos.capacidad != null ? edificiosReligiosos.capacidad.ToString():"";
-                tbUbicacion.Text = edificiosReligiosos.ubicacion != null ? edificiosReligiosos.ubicacion.ToString() : "";
-                dateTimePicker1.Value = edificiosReligiosos.fecha_construccion.Value;
-                tbreligion.Text = edificiosReligiosos.denominacion_religiosa != null ? edificiosReligiosos.denominacion_religiosa.ToString() : "";
-                cbPais.Text = pais.nombre_pais.ToString();
-                cbContinente.Text = pais.Continentes.nombre_continente.ToString();
-                tbWikipedia.Text = edificiosReligiosos.wikipedia_link != null ? edificiosReligiosos.wikipedia_link.ToString() : "" ;
-                tbResenya.Text = edificiosReligiosos.ressenya != null ? edificiosReligiosos.ressenya.ToString() : "";
-                tbWeb.Text = edificiosReligiosos.web_link != null ? edificiosReligiosos.web_link.ToString() : "";
-                tbX.Text = edificiosReligiosos.cordX != null ? edificiosReligiosos.cordX.ToString() : "";
-                tbY.Text = edificiosReligiosos.cordY != null ? edificiosReligiosos.cordY.ToString() : "";
-
-                pbImagen.Image = edificiosReligiosos.ImagenBase64 != null ?  Base64ToImage(edificiosReligiosos.ImagenBase64) : EntityFrameworkProject.Properties.Resources.placeholder;
-                pbImagen.SizeMode = PictureBoxSizeMode.Zoom;
-                base64String = edificiosReligiosos.ImagenBase64;
-
+                formToQuery();
                 updateDataGridGaleria();
                 
                 
@@ -175,7 +109,28 @@ namespace EntityFrameworkProject.FORMS
 
 
         }
+        private void formToQuery()
+        {
 
+            tbId.Text = edificiosReligiosos.id_edificio.ToString();
+            tbId.Text = edificiosReligiosos.id_edificio.ToString();
+            tbNombre.Text = edificiosReligiosos.nombre != null ? edificiosReligiosos.nombre : "";
+            tbCapacidad.Text = edificiosReligiosos.capacidad != null ? edificiosReligiosos.capacidad.ToString() : "";
+            tbUbicacion.Text = edificiosReligiosos.ubicacion != null ? edificiosReligiosos.ubicacion.ToString() : "";
+            dateTimePicker1.Value = edificiosReligiosos.fecha_construccion.Value;
+            tbreligion.Text = edificiosReligiosos.denominacion_religiosa != null ? edificiosReligiosos.denominacion_religiosa.ToString() : "";
+            cbPais.Text = pais.nombre_pais.ToString();
+            cbContinente.Text = pais.Continentes.nombre_continente.ToString();
+            tbWikipedia.Text = edificiosReligiosos.wikipedia_link != null ? edificiosReligiosos.wikipedia_link.ToString() : "";
+            tbResenya.Text = edificiosReligiosos.ressenya != null ? edificiosReligiosos.ressenya.ToString() : "";
+            tbWeb.Text = edificiosReligiosos.web_link != null ? edificiosReligiosos.web_link.ToString() : "";
+            tbX.Text = edificiosReligiosos.cordX != null ? edificiosReligiosos.cordX.ToString() : "";
+            tbY.Text = edificiosReligiosos.cordY != null ? edificiosReligiosos.cordY.ToString() : "";
+
+            pbImagen.Image = edificiosReligiosos.ImagenBase64 != null ? ImageB64.Base64ToImage(edificiosReligiosos.ImagenBase64) : EntityFrameworkProject.Properties.Resources.placeholder;
+            pbImagen.SizeMode = PictureBoxSizeMode.Zoom;
+            base64String = edificiosReligiosos.ImagenBase64;
+        }
         private void initCbContinente()
         {
             var queryContinent = from c in practicaCtx.Continentes
@@ -219,40 +174,33 @@ namespace EntityFrameworkProject.FORMS
 
             this.Cursor = Cursors.WaitCursor;
 
-            //FrmgestionEdificios frmgestion = new FrmgestionEdificios();
-            try { 
-                
-                
-
-                edificiosReligiosos.nombre = tbNombre.Text.Trim();
-                edificiosReligiosos.ubicacion = tbUbicacion.Text.Trim();
-                edificiosReligiosos.capacidad = Convert.ToInt32(tbCapacidad.Text.Trim());
-                edificiosReligiosos.fecha_construccion = dateTimePicker1.Value;
-                edificiosReligiosos.denominacion_religiosa = tbreligion.Text.Trim();
-                edificiosReligiosos.id_pais = (int)cbPais.SelectedValue;
-                edificiosReligiosos.wikipedia_link = tbWikipedia.Text.Trim();
-                edificiosReligiosos.web_link = tbWeb.Text.Trim();
-                edificiosReligiosos.ressenya = tbResenya.Text;
-                edificiosReligiosos.cordX = float.Parse(tbX.Text.Trim());
-                edificiosReligiosos.cordY = float.Parse(tbY.Text.Trim());
-                edificiosReligiosos.ImagenBase64 = base64String;
-
+            
+            try {
+                FormToQuery();
             }catch(Exception ex)
             {
                 MessageBox.Show("El formato de alguno de los datos insertados no es el correcto. Error: ");
                 practicaCtx.EdificiosReligiosos.Remove(edificiosReligiosos);
                 practicaCtx.SaveChanges();
 
+                
+
             }
 
             try
             {
-                if(Convert.ToInt32(tbCapacidad.Text.Trim()) > 0 && tbNombre.Text.Length > 0 && tbreligion.Text.Length > 0)
+                
+                if (Convert.ToInt32(tbCapacidad.Text.Trim()) > 0 && tbNombre.Text.Length > 0 && tbreligion.Text.Length > 0 
+                    && correctUrl(edificiosReligiosos.web_link) && correctUrl(edificiosReligiosos.wikipedia_link))
                 {
                     practicaCtx.SaveChanges();
                     ed.loadDataGrid();
-                    //insertarGaleria();
+                    if(op ==1) insertarPreview();
+
+
+
                 }
+
             }
             catch (Exception ex)
             {
@@ -267,6 +215,28 @@ namespace EntityFrameworkProject.FORMS
             this.Close();
         }
 
+        private bool correctUrl(string url)
+        {
+            bool result = Uri.TryCreate(url, UriKind.Absolute, out Uri uriResult)
+                    && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+            return result;
+        }
+        private void FormToQuery()
+        {
+            edificiosReligiosos.nombre = tbNombre.Text.Trim();
+            edificiosReligiosos.ubicacion = tbUbicacion.Text.Trim();
+            edificiosReligiosos.capacidad = Convert.ToInt32(tbCapacidad.Text.Trim());
+            edificiosReligiosos.fecha_construccion = dateTimePicker1.Value;
+            edificiosReligiosos.denominacion_religiosa = tbreligion.Text.Trim();
+            edificiosReligiosos.id_pais = (int)cbPais.SelectedValue;
+            edificiosReligiosos.wikipedia_link = tbWikipedia.Text.Trim();
+            edificiosReligiosos.web_link = tbWeb.Text.Trim();
+            edificiosReligiosos.ressenya = tbResenya.Text;
+            edificiosReligiosos.cordX = float.Parse(tbX.Text.Trim());
+            edificiosReligiosos.cordY = float.Parse(tbY.Text.Trim());
+            edificiosReligiosos.ImagenBase64 = base64String;
+        }
+
         private void insertarPreview()
         {
             using (IWebDriver driver = new ChromeDriver())
@@ -274,7 +244,7 @@ namespace EntityFrameworkProject.FORMS
                 Galeria galeria = new Galeria();
                 driver.Navigate().GoToUrl(edificiosReligiosos.web_link);       
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
-                string base64Screenshot = ConvertScreenshotToBase64(screenshot);
+                string base64Screenshot = ImageB64.ConvertScreenshotToBase64(screenshot);
                 galeria.imagen_base64 = base64Screenshot;
                 galeria.id_edificio = edificiosReligiosos.id_edificio;
                 galeria.Preview = true;
@@ -315,14 +285,14 @@ namespace EntityFrameworkProject.FORMS
 
         private void cbPais_TextUpdate(object sender, EventArgs e)
         {
-            if (!(cbContinente.Text == ""))
-            {
+            //if (!(cbContinente.Text == ""))
+            //{
                 
-            }
-            else
-            {
-                cbPais.Enabled = false;
-            }
+            //}
+            //else
+            //{
+            //    cbPais.Enabled = false;
+            //}
         }
 
        
@@ -357,7 +327,7 @@ namespace EntityFrameworkProject.FORMS
             {
                 // Obtener la ruta del archivo seleccionado
                 ListaBase64.Clear();
-                ListaBase64.Add(ImageToBase642(openFileDialog1.FileName));
+                ListaBase64.Add(ImageB64.ImageToBase64Path(openFileDialog1.FileName));
 
                 //dgv.DataSource = ListaBase64.ToList();
                 insertarGaleria();
@@ -369,7 +339,7 @@ namespace EntityFrameworkProject.FORMS
         {
             var queryGaleria = from g in practicaCtx.Galeria
                                orderby g.id_galeria
-                               where (int)g.id_edificio == (int)edificiosReligiosos.id_edificio
+                               where (int)g.id_edificio == (int)edificiosReligiosos.id_edificio && g.Preview == null
                                select new
                                {
                                    ID = g.id_galeria,
@@ -386,7 +356,7 @@ namespace EntityFrameworkProject.FORMS
             foto = practicaCtx.Galeria.Find(dgv.SelectedCells[0].Value);
 
 
-            pbImagenGaleria.Image = Base64ToImage(foto.imagen_base64);
+            pbImagenGaleria.Image = ImageB64.Base64ToImage(foto.imagen_base64);
 
             panelGaleriaPreview.Visible = true;
         }

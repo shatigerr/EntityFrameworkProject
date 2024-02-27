@@ -67,6 +67,7 @@
     <Compile Include="Continentes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ImageB64.cs" />
     <Compile Include="EdificiosReligiosos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
